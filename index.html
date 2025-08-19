@@ -6,20 +6,36 @@
   <title>💜 Mit Free2move hinfahren – Anfrageformular</title>
   <style>
     body { font-family: Arial, sans-serif; background:#f5f7f9; color:#0A0A0A; margin:0 }
-    .container { max-width: 600px; margin: 40px auto; background:#fff; padding:30px; border-radius:16px; box-shadow:0 4px 10px rgba(0,0,0,.1) }
-    h1 { color:#1E0046; font-size:24px; margin:0 0 10px }
+    header { background:#1E0046; padding:15px 20px; display:flex; align-items:center; }
+    header img { height:40px; }
+    .hero { position:relative; }
+    .hero img { width:100%; max-height:280px; object-fit:cover; }
+    .container { max-width: 600px; margin: -80px auto 40px auto; background:#fff; padding:30px; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.15) }
+    h1 { color:#1E0046; font-size:24px; margin:0 0 10px; text-align:center }
     label { display:block; margin:15px 0 5px; font-weight:600 }
     input, select, textarea, button { width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; font-size:14px }
     button { margin-top:20px; background:#1E0046; color:#fff; border:none; cursor:pointer; font-size:16px }
     button:hover { background:#00B3E6 }
-    .note { margin-top:12px; font-size:13px; color:#6C6C6C }
+    .note { margin-top:12px; font-size:13px; color:#6C6C6C; text-align:center }
   </style>
 </head>
 <body>
+
+  <!-- Logo in Header -->
+  <header>
+    <img src="17824973.png" alt="Free2move Logo">
+  </header>
+
+  <!-- Hero-Banner -->
+  <div class="hero">
+    <img src="image.jpg" alt="Free2move Banner">
+  </div>
+
+  <!-- Formular-Container -->
   <div class="container">
     <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
 
-    <!-- Formular mit deiner neuen Web-App-URL -->
+    <!-- Formular -->
     <form action="https://script.google.com/macros/s/AKfycbzTOJbJj5uMuqC0nR3koXOyCMg4cbEPvlbmvMpQFHuutsdGHN08wunJPJYTGLMhMp0j/exec" method="POST">
       
       <label for="name">Dein Name</label>
@@ -28,7 +44,6 @@
       <label for="email">Deine E-Mail</label>
       <input type="email" id="email" name="email" required />
 
-      <!-- Instagram-Link -->
       <label for="instagram">Instagram (Link zu deinem Profil)</label>
       <input
         type="url"
@@ -67,5 +82,6 @@
   </div>
 </body>
 </html>
+
 
 
