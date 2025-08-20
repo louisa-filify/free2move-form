@@ -13,11 +13,10 @@
       --muted:#6C6C6C;
       --soft:#F5F7F9;
     }
-
     *{ box-sizing:border-box }
     html,body{ margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:#fff }
 
-    /* ===== Hero (alles untereinander & zentriert) ===== */
+    /* ===== Hero (zentriert & untereinander) ===== */
     .hero{
       color:#fff;
       background:
@@ -26,79 +25,51 @@
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     .hero .wrap{
-      max-width:960px;
-      margin:0 auto;
-      padding:28px 18px 36px;
-      text-align:center;                 /* <— Mitte */
-      display:flex;
-      flex-direction:column;             /* <— untereinander */
-      align-items:center;                /* <— zentriert */
-      gap:12px;
+      max-width:960px; margin:0 auto; padding:28px 18px 36px;
+      text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px;
     }
-
     .logo-row{ display:flex; gap:10px; align-items:center; }
     .logo-row img{ height:32px; width:auto; display:block; filter:drop-shadow(0 2px 6px rgba(0,0,0,.25)); }
     .tag{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; opacity:.85 }
-
     h1{ margin:6px 0 6px; font-size:32px; line-height:1.15 }
     .lead{ margin:0; opacity:.92; max-width:720px }
-
-    .cta-row{
-      display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:16px
-    }
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:16px }
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:700;
-      transition: .15s transform, .15s filter, .15s background;
-      white-space:nowrap;
+      transition:.15s transform,.15s filter,.15s background; white-space:nowrap;
     }
     .btn-primary{ background:#fff; color:var(--primary) }
     .btn-primary:hover{ filter:brightness(1.06); transform:translateY(-1px) }
-    .btn-outline{ border:1px solid rgba(255,255,255,.55); color:#fff; background:transparent }
-    .btn-outline:hover{ background:rgba(255,255,255,.08) }
 
     /* ===== Inhalt / Formular ===== */
     .wrap{ max-width:960px; margin:0 auto; padding:20px 18px }
     .note{
-      background:var(--soft);
-      border:1px solid #e8ecf0;
-      color:#3f4750;
+      background:var(--soft); border:1px solid #e8ecf0; color:#3f4750;
       border-radius:12px; padding:12px 14px; font-size:14px;
     }
-
     .form-card{
-      margin-top:14px;
-      background:#fff; border:1px solid #eaeef3; border-radius:16px;
-      box-shadow:0 10px 26px rgba(30,0,70,.07);
-      padding:18px;
+      margin-top:14px; background:#fff; border:1px solid #eaeef3; border-radius:16px;
+      box-shadow:0 10px 26px rgba(30,0,70,.07); padding:18px;
     }
     .form-card h2{ margin:0 0 10px; font-size:20px }
-
     label{ display:block; font-size:13px; color:#526171; margin:12px 0 6px }
-    input, select, textarea{
+    input,select,textarea{
       width:100%; padding:12px 12px; border:1px solid #dfe6ee; border-radius:12px;
       font-size:15px; outline:none; background:#fff;
     }
-    input:focus, select:focus, textarea:focus{
-      border-color:var(--accent); box-shadow:0 0 0 3px rgba(0,179,230,.15);
-    }
+    input:focus,select:focus,textarea:focus{ border-color:var(--accent); box-shadow:0 0 0 3px rgba(0,179,230,.15) }
     textarea{ min-height:110px; resize:vertical }
-
     .actions{ display:flex; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap }
     .submit{ background:var(--primary); color:#fff; border:none; cursor:pointer }
     .submit:hover{ filter:brightness(1.05); transform:translateY(-1px) }
     .small{ font-size:12px; color:#6C6C6C }
-
-    footer{ border-top:1px solid var(--soft); color:#6C6C6C; text-align:center; font-size:13px; padding:26px 0; }
-
-    @media (max-width:640px){
-      h1{ font-size:26px }
-    }
+    footer{ border-top:1px solid var(--soft); color:#6C6C6C; text-align:center; font-size:13px; padding:26px 0 }
+    @media (max-width:640px){ h1{ font-size:26px } }
   </style>
 </head>
 <body>
-
-  <!-- HERO (zentriert & untereinander) -->
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
       <div class="logo-row">
@@ -114,26 +85,23 @@
 
       <div class="cta-row">
         <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
-        <a class="btn btn-outline"
-           href="mailto:louisa@filify.app?subject=Event%20vorschlagen%20(Free2move%20Creator)&body=Hi%20Team%2C%0Aich%20m%C3%B6chte%20dieses%20Event%20vorschlagen%3A%0A%0AName%20des%20Events%3A%0ADatum%2FZeitraum%3A%0AStadt%3A%0ALink%3A%0AKurze%20Notiz%3A%0A%0AThanks%21">
-          Event vorschlagen
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- INFO + FORM (Form sofort sichtbar) -->
+  <!-- INFO + FORM -->
   <main class="wrap">
     <div class="note">
-      Hinweis: Nach Freigabe erhältst du einen <b>persönlichen Code</b>, den du teilen kannst.
-      Für jede Registrierung über deinen Code erhältst du <b>5&nbsp;€</b>.
+      Hinweis: Nach Freigabe erhältst du einen <b>Affiliate-Link</b>, über den deine Community
+      die App herunterladen und sich registrieren kann. Für <b>jeden Download/Registrierung
+      über deinen Link erhältst du 5&nbsp;€</b>.
     </div>
 
     <div id="form" class="form-card">
       <h2>Voucher anfragen</h2>
 
       <form method="POST"
-            action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
+        action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
         <label>Dein Name</label>
         <input name="name" type="text" placeholder="Max Mustermann" required>
 
@@ -166,6 +134,7 @@
   <footer>© 2025 Free2move</footer>
 </body>
 </html>
+
 
 
 
