@@ -4,111 +4,132 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>💜 Mit Free2move hinfahren – Voucher anfragen</title>
+  <meta name="color-scheme" content="light only" />
   <style>
-    :root { --primary:#1E0046; --ink:#0A0A0A; --soft:#F5F7F9; --muted:#6C6C6C; }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--soft);
-      color: var(--ink);
+    :root{
+      --primary:#1E0046; --accent:#00B3E6; --ink:#0A0A0A; --muted:#6C6C6C; --soft:#F5F7F9;
     }
-    header {
-      background: var(--primary);
-      height: 64px;
-      display:flex; align-items:center; padding:0 20px;
-    }
-    header img { height: 36px; }
+    *{ box-sizing:border-box }
+    body{ margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:#fff }
+    header{ position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--soft) }
+    .wrap{ max-width:1040px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; justify-content:space-between }
+    .brand{ display:flex; align-items:center; gap:10px }
+    .brand img{ height:28px; width:auto; display:block }
+    .tag{ color:var(--muted); font-size:12px; letter-spacing:.06em; text-transform:uppercase }
 
-    .wrap { max-width: 860px; margin: 24px auto 60px; padding: 0 16px; }
-    h1 { color: var(--primary); margin: 8px 0 6px; font-size: 26px; }
-    .lead { color: var(--muted); margin-bottom: 6px; }
-    .info-badge {
-      display:inline-block; margin: 8px 0 18px; padding: 8px 12px;
-      background:#fff; border:1px solid #e7e9ee; border-radius:12px; font-size:14px;
-    }
+    .hero{ background:linear-gradient(180deg,#fff 0,#fafbfc 70%, #fff 100%); border-bottom:1px solid var(--soft) }
+    .hero-inner{ max-width:1040px; margin:0 auto; padding:28px 16px; display:grid; gap:18px }
+    .hero h1{ margin:0; font-size:28px; color:var(--primary) }
+    .hero p{ margin:0; color:var(--muted) }
+    .cta-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 16px; border-radius:12px; font-weight:700; text-decoration:none; transition:.15s all }
+    .btn-primary{ background:var(--primary); color:#fff }
+    .btn-primary:hover{ filter:brightness(1.05) }
+    .btn-ghost{ border:1px solid var(--primary); color:var(--primary); background:#fff }
+    .btn-ghost:hover{ background:#f6f2ff }
 
-    form {
-      background:#fff; border-radius:16px; padding: 24px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
-    }
-    label { display:block; font-weight:600; margin: 14px 0 6px; }
-    input, select, textarea {
-      width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:12px;
-      font: inherit; background:#fff;
-    }
-    textarea { min-height: 110px; resize: vertical; }
-    .row { display:grid; gap:14px; grid-template-columns: 1fr 1fr; }
-    .row > * { min-width: 0; }
-    .note { font-size: 13px; color: var(--muted); margin-top: 8px; }
+    .note{ background:var(--soft); border:1px solid #e8ecf0; border-radius:12px; padding:12px 14px; color:var(--muted); font-size:14px }
 
-    .actions { margin-top: 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-    .btn {
-      display:inline-block; padding: 12px 20px; border-radius: 12px;
-      background: var(--primary); color:#fff; text-decoration:none; font-weight:700;
-      border: 0; cursor: pointer;
-    }
-    .btn:disabled { opacity:.6; cursor: not-allowed; }
-    .ghost { background: transparent; color: var(--primary); border:1px solid var(--primary); }
+    .bar{ border-top:1px solid var(--soft); border-bottom:1px solid var(--soft); background:#fff }
+    .filters{ max-width:1040px; margin:0 auto; padding:14px 16px; display:flex; gap:10px; align-items:center; justify-content:space-between; color:var(--muted); font-size:14px }
 
-    @media (max-width: 640px){
-      .row { grid-template-columns: 1fr; }
-      h1 { font-size: 22px; }
+    /* Formular-Card */
+    .section{ max-width:1040px; margin:0 auto; padding:18px 16px }
+    .grid{ display:grid; gap:16px }
+    .card{ background:#fff; border:1px solid var(--soft); border-radius:16px; padding:18px; }
+    .card h2{ margin:0 0 6px 0; font-size:18px }
+    label{ display:block; font-size:13px; color:var(--muted); margin:10px 0 6px }
+    input, select, textarea{ width:100%; padding:12px 12px; border:1px solid #dfe6ee; border-radius:12px; font-size:15px; outline:none }
+    input:focus, select:focus, textarea:focus{ border-color:var(--accent); box-shadow:0 0 0 3px rgba(0,179,230,.12) }
+    textarea{ min-height:110px; resize:vertical }
+
+    .actions{ display:flex; gap:10px; align-items:center; margin-top:6px }
+    .small{ font-size:12px; color:var(--muted) }
+
+    footer{ border-top:1px solid var(--soft); color:var(--muted); text-align:center; font-size:13px; padding:24px 0; margin-top:24px }
+
+    @media (min-width:860px){
+      .hero-inner{ grid-template-columns: 1.1fr .9fr; align-items:center }
+    }
+    @media (max-width:640px){
+      .hero h1{ font-size:24px }
     }
   </style>
 </head>
 <body>
+  <!-- Header mit NEUEM Logo -->
   <header>
-    <img src="17824973.png" alt="Free2move">
+    <div class="wrap">
+      <div class="brand">
+        <img src="NEWlogo.png" alt="Free2move Logo" />
+        <span class="tag">Events 2025</span>
+      </div>
+      <a class="btn btn-ghost" href="https://free2move.com" target="_blank" rel="noreferrer">Auto jetzt buchen</a>
+    </div>
   </header>
 
-  <main class="wrap">
-    <h1>💜 Mit Free2move hinfahren</h1>
-    <p class="lead">
-      Nutze einfache Mobilität von A&nbsp;nach&nbsp;B – für Events oder im Alltag (Konzert, Flughafentransfer, Geburtstag, Night&nbsp;Out).
-    </p>
-    <div class="info-badge">Du erhältst einen Voucher im Wert von <strong>50&nbsp;€</strong>.</div>
-
-    <!-- FORM -->
-    <form method="POST" action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
-      <!-- fix 50 € silently passed along -->
-      <input type="hidden" name="amount" value="50" />
-
-      <label for="name">Dein Name*</label>
-      <input id="name" name="name" required placeholder="Vor- und Nachname" />
-
-      <label for="email">Deine E-Mail*</label>
-      <input id="email" name="email" type="email" required placeholder="name@mail.com" />
-
-      <label for="instagram">Instagram (Link zu deinem Profil)</label>
-      <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
-      <div class="note">Beispiel: https://www.instagram.com/deinhandle</div>
-
-      <label for="event">Event / Anlass*</label>
-      <input id="event" name="event" required placeholder="z. B. Konzert, Festival, Messe" />
-
-      <div class="row">
-        <div>
-          <label for="city">Stadt*</label>
-          <input id="city" name="city" required placeholder="Berlin, Hamburg, München …" />
+  <!-- Hero mit zusätzlichem Button „Event vorschlagen“ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
+        <p>Fahre zu Events oder nutze Free2move für Alltag & Spontan-Trips. Du erhältst einen <b>Voucher im Wert von 50 €</b>.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
+          <!-- Event vorschlagen: E-Mail mit vorgefülltem Betreff -->
+          <a class="btn btn-ghost" href="mailto:louisa@filify.app?subject=Event%20vorschlagen%20(Free2move%20Creator)&body=Hi%20team%2C%0Aich%20m%C3%B6chte%20dieses%20Event%20vorschlagen%3A%0A%0AName%20des%20Events%3A%0ADatum%2FZeitraum%3A%0AStadt%3A%0ALink%3A%0AKurze%20Notiz%3A%0A%0AThanks%21">
+            Event vorschlagen
+          </a>
         </div>
-        <div>
-          <label for="date">Datum*</label>
-          <input id="date" name="date" type="date" required />
+        <div class="note" style="margin-top:12px">
+          Hinweis: Nach Freigabe erhältst du einen <b>persönlichen Code</b>, den du teilen kannst. 
+          Für jede Registrierung über deinen Code erhältst du <b>5 €</b>.
         </div>
       </div>
-
-      <label for="notes">Zusätzliche Infos</label>
-      <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
-
-      <div class="actions">
-        <button class="btn" type="submit">Anfrage absenden</button>
-        <a class="btn ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noreferrer">Events ansehen</a>
+      <div class="note">
+        🔎 Tipp: Du kannst auch eigene Anlässe einreichen (Konzert, Flughafen-Transfer, Geburtstag, Night-Out, Wochenendtrip u. v. m.).
       </div>
+    </div>
+  </section>
 
-      <div class="note">Mit dem Absenden stimmst du der Kontaktaufnahme per E-Mail zu.</div>
-    </form>
-  </main>
+  <div class="bar"><div class="filters">Formular ausfüllen (≈1 Min.) – wir melden uns per E-Mail.</div></div>
+
+  <!-- Formular -->
+  <section id="form" class="section">
+    <div class="grid">
+      <form class="card" method="POST" action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
+        <h2>Voucher anfragen</h2>
+
+        <label>Dein Name</label>
+        <input name="name" type="text" placeholder="Max Mustermann" required />
+
+        <label>Deine E-Mail</label>
+        <input name="email" type="email" placeholder="dein.name@mail.com" required />
+
+        <label>Instagram (Link zu deinem Profil)</label>
+        <input name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
+
+        <label>Event / Anlass</label>
+        <input name="title" type="text" placeholder="z. B. Konzert, Festival, Messe …" required />
+
+        <label>Stadt</label>
+        <input name="city" type="text" placeholder="z. B. Berlin" required />
+
+        <label>Datum</label>
+        <input name="date" type="date" />
+
+        <label>Zusätzliche Infos</label>
+        <textarea name="message" placeholder="Content-Idee, weitere Links, Anmerkungen …"></textarea>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Anfrage absenden</button>
+          <span class="small">Du erhältst einen Voucher im Wert von <b>50 €</b> (Standard).<br/>Nach Freigabe schicken wir dir deinen persönlichen Code (5 €/Registration).</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>© 2025 Free2move</footer>
 </body>
 </html>
 
