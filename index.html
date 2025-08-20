@@ -1,139 +1,218 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Free2move – Voucher anfragen</title>
-  <meta name="color-scheme" content="light only" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💜 Mit Free2move hinfahren – Anfrageformular</title>
   <style>
-    :root{
-      --primary:#1E0046;  /* Deep Purple */
-      --accent:#00B3E6;   /* Brand Cyan */
-      --ink:#0A0A0A;
-      --muted:#6C6C6C;
-      --soft:#F5F7F9;
+    :root { 
+      --primary:#1E0046; 
+      --accent:#00B3E6; 
+      --ink:#0A0A0A; 
+      --soft:#F5F7F9; 
     }
-    *{ box-sizing:border-box }
-    html,body{ margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); background:#fff }
 
-    /* ===== Hero (zentriert & untereinander) ===== */
-    .hero{
-      color:#fff;
-      background:
-        radial-gradient(900px 500px at 85% 120%, rgba(0,179,230,.22), transparent 60%),
-        linear-gradient(180deg, #240054 0%, #1E0046 60%, #1A003C 100%);
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .hero .wrap{
-      max-width:960px; margin:0 auto; padding:28px 18px 36px;
-      text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px;
-    }
-    .logo-row{ display:flex; gap:10px; align-items:center; }
-    .logo-row img{ height:32px; width:auto; display:block; filter:drop-shadow(0 2px 6px rgba(0,0,0,.25)); }
-    .tag{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; opacity:.85 }
-    h1{ margin:6px 0 6px; font-size:32px; line-height:1.15 }
-    .lead{ margin:0; opacity:.92; max-width:720px }
-    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:16px }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 18px; border-radius:12px; text-decoration:none; font-weight:700;
-      transition:.15s transform,.15s filter,.15s background; white-space:nowrap;
-    }
-    .btn-primary{ background:#fff; color:var(--primary) }
-    .btn-primary:hover{ filter:brightness(1.06); transform:translateY(-1px) }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ===== Inhalt / Formular ===== */
-    .wrap{ max-width:960px; margin:0 auto; padding:20px 18px }
-    .note{
-      background:var(--soft); border:1px solid #e8ecf0; color:#3f4750;
-      border-radius:12px; padding:12px 14px; font-size:14px;
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--soft);
+      color: var(--ink);
+      line-height: 1.5;
     }
-    .form-card{
-      margin-top:14px; background:#fff; border:1px solid #eaeef3; border-radius:16px;
-      box-shadow:0 10px 26px rgba(30,0,70,.07); padding:18px;
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      background: var(--primary);
+      padding: 10px 20px;
     }
-    .form-card h2{ margin:0 0 10px; font-size:20px }
-    label{ display:block; font-size:13px; color:#526171; margin:12px 0 6px }
-    input,select,textarea{
-      width:100%; padding:12px 12px; border:1px solid #dfe6ee; border-radius:12px;
-      font-size:15px; outline:none; background:#fff;
+
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
     }
-    input:focus,select:focus,textarea:focus{ border-color:var(--accent); box-shadow:0 0 0 3px rgba(0,179,230,.15) }
-    textarea{ min-height:110px; resize:vertical }
-    .actions{ display:flex; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap }
-    .submit{ background:var(--primary); color:#fff; border:none; cursor:pointer }
-    .submit:hover{ filter:brightness(1.05); transform:translateY(-1px) }
-    .small{ font-size:12px; color:#6C6C6C }
-    footer{ border-top:1px solid var(--soft); color:#6C6C6C; text-align:center; font-size:13px; padding:26px 0 }
-    @media (max-width:640px){ h1{ font-size:26px } }
+
+    header .logo img {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #1E0046, #5c1e90);
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: #fff;
+      color: var(--primary);
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    .btn.secondary:hover {
+      background: #fff;
+      color: var(--primary);
+    }
+
+    /* Form Container */
+    .container {
+      max-width: 600px;
+      margin: -40px auto 40px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 22px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #3c007a;
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #6C6C6C;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 24px; }
+      .hero p { font-size: 16px; }
+      .container { margin: -32px 12px 40px; padding: 20px; }
+    }
   </style>
 </head>
 <body>
-  <!-- HERO -->
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="NEWlogo.png" alt="Free2move Logo"/>
+      <span>EVENTS 2025</span>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="wrap">
-      <div class="logo-row">
-        <img src="NEWlogo.png" alt="Free2move" />
-        <span class="tag">Events 2025</span>
-      </div>
-
-      <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
-      <p class="lead">
-        Fahre zu Events oder nutze Free2move für Alltag & Spontan-Trips.
-        Du erhältst einen <b>Voucher im Wert von 50&nbsp;€</b>.
-      </p>
-
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
-      </div>
+    <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
+    <p>Fahre zu Events oder nutze Free2move für Alltag & Spontan-Trips.<br>
+       Du erhältst einen <strong>Voucher im Wert von 50 €</strong>.
+    </p>
+    <div class="cta-buttons">
+      <a class="btn" href="https://free2move-form-i91f.vercel.app/">Jetzt Voucher beantragen</a>
+      <a class="btn secondary" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa">Events anschauen</a>
     </div>
   </section>
 
-  <!-- INFO + FORM -->
-  <main class="wrap">
-    <div class="note">
-      Hinweis: Nach Freigabe erhältst du einen <b>Affiliate-Link</b>, über den deine Community
-      die App herunterladen und sich registrieren kann. Für <b>jeden Download/Registrierung
-      über deinen Link erhältst du 5&nbsp;€</b>.
-    </div>
+  <!-- Formular -->
+  <div class="container">
+    <h2>Voucher anfragen</h2>
+    <form method="POST" action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
+      
+      <label for="name">Dein Name</label>
+      <input type="text" id="name" name="name" required>
 
-    <div id="form" class="form-card">
-      <h2>Voucher anfragen</h2>
+      <label for="email">Deine E-Mail</label>
+      <input type="email" id="email" name="email" required>
 
-      <form method="POST"
-        action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
-        <label>Dein Name</label>
-        <input name="name" type="text" placeholder="Max Mustermann" required>
+      <label for="instagram">Instagram (Link zu deinem Profil)</label>
+      <input type="url" id="instagram" name="instagram" placeholder="https://www.instagram.com/deinhandle">
 
-        <label>Deine E-Mail</label>
-        <input name="email" type="email" placeholder="dein.name@mail.com" required>
+      <label for="event">Event / Anlass</label>
+      <input type="text" id="event" name="event" placeholder="z. B. Konzert, Festival, Messe">
 
-        <label>Instagram (Link zu deinem Profil)</label>
-        <input name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" required>
+      <label for="city">Stadt</label>
+      <input type="text" id="city" name="city" required>
 
-        <label>Event / Anlass</label>
-        <input name="occasion" type="text" placeholder="z. B. Konzert, Festival, Messe …" required>
+      <label for="date">Datum</label>
+      <input type="date" id="date" name="date" required>
 
-        <label>Stadt</label>
-        <input name="city" type="text" placeholder="z. B. Berlin" required>
+      <label for="info">Zusätzliche Infos</label>
+      <textarea id="info" name="info" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
 
-        <label>Datum</label>
-        <input name="date" type="date" required>
+      <button type="submit">Anfrage absenden</button>
+    </form>
 
-        <label>Zusätzliche Infos</label>
-        <textarea name="message" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
+    <p class="note">Formular ausfüllen (≈1 Min.) – wir melden uns per E-Mail.</p>
+  </div>
 
-        <div class="actions">
-          <button class="btn submit" type="submit">Anfrage absenden</button>
-          <span class="small">Formular ausfüllen (≈1 Min.) – wir melden uns per E-Mail.</span>
-        </div>
-      </form>
-    </div>
-  </main>
-
-  <footer>© 2025 Free2move</footer>
 </body>
 </html>
+
 
 
 
