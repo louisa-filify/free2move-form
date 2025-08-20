@@ -1,3 +1,8 @@
+var vercelBase = "https://free2move-form-i91f.vercel.app";
+var logoUrl    = vercelBase + "/17824973.png";
+var bannerUrl  = vercelBase + "/free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg";
+
+var thankYouHtml = `
 <!doctype html>
 <html lang="de">
 <head>
@@ -6,95 +11,87 @@
   <title>Danke – Free2move</title>
   <style>
     :root { --primary:#1E0046; --ink:#0A0A0A; --soft:#F5F7F9; --muted:#6C6C6C; }
-    * { box-sizing: border-box; }
+    * { box-sizing:border-box; }
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--soft);
-      color: var(--ink);
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--soft);
+      color:var(--ink);
     }
-
     header {
-      background: var(--primary);
-      height: 64px;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
+      background:var(--primary);
+      height:64px;
+      display:flex;
+      align-items:center;
+      padding:0 20px;
     }
-    header img { height: 32px; }
-
-    /* Hero section */
+    header img { height:32px }
     .hero {
-      position: relative;
-      height: 420px;
-      overflow: hidden;
+      position:relative;
+      height:420px;
+      overflow:hidden;
     }
     .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%;
-      display: block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center 40%;
+      display:block;
     }
-
-    /* Card */
     .card {
-      max-width: 800px;
-      margin: -80px auto 60px;
-      background: #fff;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.14);
-      text-align: center;
-      position: relative;
-      z-index: 2;
+      max-width:800px;
+      margin:-80px auto 60px;
+      background:#fff;
+      padding:32px;
+      border-radius:16px;
+      box-shadow:0 12px 28px rgba(0,0,0,.14);
+      text-align:center;
+      position:relative;
+      z-index:2;
     }
     h1 {
-      margin: 0 0 12px;
-      font-size: 28px;
-      color: var(--primary);
+      margin:0 0 12px;
+      font-size:28px;
+      color:var(--primary);
     }
-    p { margin: 0 0 18px; line-height: 1.5; }
+    p { margin:0 0 18px; line-height:1.5 }
     .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 12px;
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
+      display:inline-block;
+      padding:12px 20px;
+      border-radius:12px;
+      background:var(--primary);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
     }
-    .btn:hover { filter: brightness(1.05); }
-
+    .btn:hover { filter:brightness(1.05); }
     footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      padding-bottom: 28px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      padding-bottom:28px;
+    }
+    @media(max-width:740px){
+      .hero{height:300px;}
+      .card{margin:-64px 16px 48px;padding:24px;}
+      h1{font-size:24px;}
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="17824973.png" alt="Free2move Logo">
-  </header>
-
+  <header><img src="${logoUrl}" alt="Free2move"></header>
   <section class="hero">
-    <!-- Hier das richtige Bild -->
-    <img src="free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg" 
-         alt="Free2move Fiat 500e" loading="eager">
+    <img src="${bannerUrl}" alt="Free2move Fiat 500e">
   </section>
-
   <main class="card">
     <h1>Danke! 🎉</h1>
-    <p>Deine Anfrage wurde gesendet. Du kannst jetzt zur Formularseite zurückkehren oder diese Seite schließen.</p>
-    <a class="btn" href="index.html">Zurück zum Formular</a>
+    <p>Deine Anfrage wurde gesendet. Du kannst jetzt zur Formularseite zurückkehren<br>
+       oder diese Seite schließen.</p>
+    <a class="btn" href="https://free2move-form-i91f.vercel.app/">Zurück zum Formular</a>
   </main>
-
   <footer>© 2025 Free2move</footer>
 </body>
 </html>
-
-
+`;
 
 
