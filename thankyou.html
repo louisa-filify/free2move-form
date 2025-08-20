@@ -3,95 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Danke 🎉</title>
+  <title>Danke! 🎉</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f5f7f9;
-      color: #333;
+      background: #f5f7f9;
+      color: #111;
     }
-
     header {
-      background-color: #1E0046;
+      background: #1E0046;
       padding: 12px 20px;
       display: flex;
       align-items: center;
     }
     header img {
-      height: 36px;
+      height: 32px;
     }
-
     .hero {
-      height: 460px; /* höher, damit mehr vom Bild sichtbar wird */
-      background: url('free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg') no-repeat center -60px;
-      background-size: cover;
       position: relative;
+      height: 360px; /* feste Höhe */
+      overflow: hidden;
     }
-
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%; /* nach oben verschieben */
+    }
     .card {
       max-width: 720px;
-      margin: -80px auto 40px;
+      margin: -60px auto 60px; /* hebt die Karte etwas ins Bild, aber nicht zu weit */
       background: #fff;
-      padding: 30px;
+      padding: 32px;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
-    .card h1 {
-      font-size: 26px;
-      margin-bottom: 12px;
+    h1 {
       color: #1E0046;
+      font-size: 24px;
+      margin: 0 0 12px;
     }
-    .card p {
-      margin: 8px 0;
-      font-size: 16px;
+    p {
+      margin: 0 0 16px;
     }
     .btn {
       display: inline-block;
-      margin-top: 16px;
+      margin-top: 12px;
       padding: 12px 20px;
+      border-radius: 12px;
+      text-decoration: none;
       background: #1E0046;
       color: #fff;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: background 0.3s ease;
+      font-weight: bold;
+      font-size: 16px;
     }
-    .btn:hover {
-      background: #3a0a7a;
-    }
-
     footer {
       text-align: center;
-      font-size: 12px;
-      color: #888;
-      margin-bottom: 20px;
+      padding: 20px;
+      font-size: 13px;
+      color: #777;
     }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
+  <!-- Header mit Logo -->
   <header>
     <img src="17824973.png" alt="Free2move Logo">
   </header>
 
-  <!-- Hero mit Banner -->
-  <div class="hero"></div>
+  <!-- Hero-Bild -->
+  <div class="hero">
+    <img src="free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg" alt="Free2move Banner">
+  </div>
 
-  <!-- Danke-Card -->
+  <!-- Karte mit Danke-Text -->
   <main class="card">
     <h1>Danke! 🎉</h1>
-    <p>Deine Anfrage wurde gesendet. Du kannst jetzt zur Formularseite zurückkehren<br> oder diese Seite schließen.</p>
-    <a class="btn" href="https://free2move-form-i91f.vercel.app/">Zurück zum Formular</a>
+    <p>Deine Anfrage wurde gesendet. Du kannst jetzt zur Formularseite zurückkehren oder diese Seite schließen.</p>
+    <a class="btn" href="index.html">Zurück zum Formular</a>
   </main>
 
   <!-- Footer -->
   <footer>
     © 2025 Free2move
   </footer>
-
 </body>
 </html>
+
 
