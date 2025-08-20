@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Danke – Free2move</title>
-  <meta name="color-scheme" content="light only" />
+  <title>💜 Mit Free2move hinfahren – Voucher anfragen</title>
   <style>
-    :root { --primary:#1E0046; --accent:#00B3E6; --ink:#0A0A0A; --soft:#F5F7F9; }
+    :root { --primary:#1E0046; --ink:#0A0A0A; --soft:#F5F7F9; --muted:#6C6C6C; }
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -14,82 +13,104 @@
       background: var(--soft);
       color: var(--ink);
     }
-    .site-header {
+    header {
       background: var(--primary);
       height: 64px;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
+      display:flex; align-items:center; padding:0 20px;
     }
-    .site-header img { height: 36px; width: auto; display: block; }
+    header img { height: 36px; }
 
-    .hero { width: 100%; max-height: 380px; overflow: hidden; }
-    .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .wrap { max-width: 860px; margin: 24px auto 60px; padding: 0 16px; }
+    h1 { color: var(--primary); margin: 8px 0 6px; font-size: 26px; }
+    .lead { color: var(--muted); margin-bottom: 18px; }
 
-    .card {
-      max-width: 720px;
-      margin: -40px auto 60px;
-      background: #fff;
-      padding: 40px 28px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.12);
-      text-align: center;
-      position: relative;
-      z-index: 2;
+    form {
+      background:#fff; border-radius:16px; padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
     }
-    h1 {
-      margin: 0 0 12px;
-      font-size: 26px;
-      color: var(--primary);
+    label { display:block; font-weight:600; margin: 14px 0 6px; }
+    input, select, textarea {
+      width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:12px;
+      font: inherit; background:#fff;
     }
-    p { margin: 8px 0 18px; line-height: 1.45; }
+    textarea { min-height: 110px; resize: vertical; }
+    .row { display:grid; gap:14px; grid-template-columns: 1fr 1fr; }
+    .row > * { min-width: 0; }
+    .note { font-size: 13px; color: var(--muted); margin-top: 8px; }
 
+    .actions { margin-top: 18px; display:flex; gap:12px; align-items:center; }
     .btn {
-      display: inline-block;
-      padding: 14px 20px;
-      border-radius: 12px;
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
+      display:inline-block; padding: 12px 20px; border-radius: 12px;
+      background: var(--primary); color:#fff; text-decoration:none; font-weight:700;
+      border: 0; cursor: pointer;
     }
-    .btn:hover { background: #3c007a; }
+    .btn:disabled { opacity:.6; cursor: not-allowed; }
+    .ghost { background: transparent; color: var(--primary); border:1px solid var(--primary); }
 
-    .footer {
-      text-align: center;
-      color: #6C6C6C;
-      font-size: 13px;
-      padding-bottom: 32px;
-    }
-
-    @media (max-width: 640px) {
-      .card { margin: -32px 12px 40px; padding: 28px 20px; }
-      .hero { max-height: 260px; }
+    @media (max-width: 640px){
+      .row { grid-template-columns: 1fr; }
       h1 { font-size: 22px; }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <img src="17824973.png" alt="Free2move" />
+  <header>
+    <img src="17824973.png" alt="Free2move">
   </header>
 
-  <section class="hero">
-    <img
-      src="free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg"
-      alt="Free2move – Fahrt mit dem Fiat 500e"
-      loading="eager"
-    />
-  </section>
+  <main class="wrap">
+    <h1>💜 Mit Free2move hinfahren</h1>
+    <p class="lead">
+      Nutze einfache Mobilität von A&nbsp;nach&nbsp;B – für Events und Alltag (Konzert, Flughafentransfer, Geburtstag, Night&nbsp;Out).
+      Beantrage hier deinen Voucher.
+    </p>
 
-  <main class="card">
-    <h1>Danke! 🎉</h1>
-    <p>Deine Anfrage wurde gesendet. Du kannst jetzt zur Formularseite zurückkehren<br>
-       oder diese Seite schließen.</p>
-    <a class="btn" href="https://free2move-form-i91f.vercel.app">Zurück zum Formular</a>
+    <!-- FORM -->
+    <form method="POST" action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
+      <label for="name">Dein Name*</label>
+      <input id="name" name="name" required placeholder="Vor- und Nachname" />
+
+      <label for="email">Deine E-Mail*</label>
+      <input id="email" name="email" type="email" required placeholder="name@mail.com" />
+
+      <label for="instagram">Instagram (Link zu deinem Profil)</label>
+      <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
+
+      <div class="note">Beispiel: https://www.instagram.com/deinhandle</div>
+
+      <label for="event">Event / Anlass*</label>
+      <input id="event" name="event" required placeholder="z. B. Konzert, Festival, Messe" />
+
+      <div class="row">
+        <div>
+          <label for="city">Stadt*</label>
+          <input id="city" name="city" required placeholder="Berlin, Hamburg, München …" />
+        </div>
+        <div>
+          <label for="date">Datum*</label>
+          <input id="date" name="date" type="date" required />
+        </div>
+      </div>
+
+      <label for="amount">Gewünschter Betrag*</label>
+      <select id="amount" name="amount" required>
+        <option value="" selected>Bitte auswählen</option>
+        <option value="50">50 €</option>
+        <option value="75">75 €</option>
+        <option value="100">100 €</option>
+      </select>
+
+      <label for="notes">Zusätzliche Infos</label>
+      <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
+
+      <div class="actions">
+        <button class="btn" type="submit">Anfrage absenden</button>
+        <a class="btn ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noreferrer">Events ansehen</a>
+      </div>
+
+      <div class="note">Mit dem Absenden stimmst du der Kontaktaufnahme per E-Mail zu.</div>
+    </form>
   </main>
-
-  <div class="footer">© 2025 Free2move</div>
 </body>
 </html>
 
