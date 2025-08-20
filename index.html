@@ -22,7 +22,11 @@
 
     .wrap { max-width: 860px; margin: 24px auto 60px; padding: 0 16px; }
     h1 { color: var(--primary); margin: 8px 0 6px; font-size: 26px; }
-    .lead { color: var(--muted); margin-bottom: 18px; }
+    .lead { color: var(--muted); margin-bottom: 6px; }
+    .info-badge {
+      display:inline-block; margin: 8px 0 18px; padding: 8px 12px;
+      background:#fff; border:1px solid #e7e9ee; border-radius:12px; font-size:14px;
+    }
 
     form {
       background:#fff; border-radius:16px; padding: 24px;
@@ -38,7 +42,7 @@
     .row > * { min-width: 0; }
     .note { font-size: 13px; color: var(--muted); margin-top: 8px; }
 
-    .actions { margin-top: 18px; display:flex; gap:12px; align-items:center; }
+    .actions { margin-top: 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
     .btn {
       display:inline-block; padding: 12px 20px; border-radius: 12px;
       background: var(--primary); color:#fff; text-decoration:none; font-weight:700;
@@ -61,12 +65,15 @@
   <main class="wrap">
     <h1>💜 Mit Free2move hinfahren</h1>
     <p class="lead">
-      Nutze einfache Mobilität von A&nbsp;nach&nbsp;B – für Events und Alltag (Konzert, Flughafentransfer, Geburtstag, Night&nbsp;Out).
-      Beantrage hier deinen Voucher.
+      Nutze einfache Mobilität von A&nbsp;nach&nbsp;B – für Events oder im Alltag (Konzert, Flughafentransfer, Geburtstag, Night&nbsp;Out).
     </p>
+    <div class="info-badge">Du erhältst einen Voucher im Wert von <strong>50&nbsp;€</strong>.</div>
 
     <!-- FORM -->
     <form method="POST" action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
+      <!-- fix 50 € silently passed along -->
+      <input type="hidden" name="amount" value="50" />
+
       <label for="name">Dein Name*</label>
       <input id="name" name="name" required placeholder="Vor- und Nachname" />
 
@@ -75,7 +82,6 @@
 
       <label for="instagram">Instagram (Link zu deinem Profil)</label>
       <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
-
       <div class="note">Beispiel: https://www.instagram.com/deinhandle</div>
 
       <label for="event">Event / Anlass*</label>
@@ -92,14 +98,6 @@
         </div>
       </div>
 
-      <label for="amount">Gewünschter Betrag*</label>
-      <select id="amount" name="amount" required>
-        <option value="" selected>Bitte auswählen</option>
-        <option value="50">50 €</option>
-        <option value="75">75 €</option>
-        <option value="100">100 €</option>
-      </select>
-
       <label for="notes">Zusätzliche Infos</label>
       <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
 
@@ -113,6 +111,7 @@
   </main>
 </body>
 </html>
+
 
 
 
