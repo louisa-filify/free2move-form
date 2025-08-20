@@ -1,96 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Danke! 🎉</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Danke – Free2move</title>
   <style>
+    :root { --primary:#1E0046; --ink:#0A0A0A; --soft:#F5F7F9; --muted:#6C6C6C; }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f7f9;
-      color: #111;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--soft);
+      color: var(--ink);
     }
+
+    /* Header */
     header {
-      background: #1E0046;
-      padding: 12px 20px;
+      background: var(--primary);
+      height: 64px;
       display: flex;
       align-items: center;
+      padding: 0 20px;
     }
-    header img {
-      height: 32px;
-    }
+    header img { height: 32px; }
+
+    /* Hero – nur das Bild, kein Overlay-Text */
     .hero {
       position: relative;
-      height: 360px; /* feste Höhe */
+      height: 420px;              /* genug Höhe für das Auto */
       overflow: hidden;
     }
     .hero img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 25%; /* nach oben verschieben */
+      object-position: center 40%; /* Bild vertikal etwas nach oben schieben */
+      display: block;
     }
+
+    /* Karte unter dem Bild, leicht überlappend */
     .card {
-      max-width: 720px;
-      margin: -60px auto 60px; /* hebt die Karte etwas ins Bild, aber nicht zu weit */
+      max-width: 800px;
+      margin: -80px auto 60px;   /* Überlappung nach oben, Abstand nach unten */
       background: #fff;
       padding: 32px;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      box-shadow: 0 12px 28px rgba(0,0,0,.14);
       text-align: center;
       position: relative;
-      z-index: 2;
+      z-index: 2;                /* vor dem Hero-Bild */
     }
     h1 {
-      color: #1E0046;
-      font-size: 24px;
       margin: 0 0 12px;
+      font-size: 28px;
+      color: var(--primary);
     }
-    p {
-      margin: 0 0 16px;
-    }
+    p { margin: 0 0 18px; line-height: 1.5; }
     .btn {
       display: inline-block;
-      margin-top: 12px;
       padding: 12px 20px;
       border-radius: 12px;
-      text-decoration: none;
-      background: #1E0046;
+      background: var(--primary);
       color: #fff;
-      font-weight: bold;
-      font-size: 16px;
+      text-decoration: none;
+      font-weight: 700;
     }
+    .btn:hover { filter: brightness(1.05); }
+
     footer {
       text-align: center;
-      padding: 20px;
+      color: var(--muted);
       font-size: 13px;
-      color: #777;
+      padding: 12px 0 28px;
+    }
+
+    @media (max-width: 740px){
+      .hero { height: 360px; }
+      .card { margin: -64px 16px 48px; padding: 24px; }
+      h1 { font-size: 24px; }
     }
   </style>
 </head>
 <body>
-  <!-- Header mit Logo -->
+  <!-- Header -->
   <header>
-    <img src="17824973.png" alt="Free2move Logo">
+    <img src="17824973.png" alt="Free2move">
   </header>
 
-  <!-- Hero-Bild -->
-  <div class="hero">
+  <!-- Hero nur mit Bild -->
+  <section class="hero">
     <img src="free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg" alt="Free2move Banner">
-  </div>
+  </section>
 
-  <!-- Karte mit Danke-Text -->
+  <!-- Klarer Card-Block darunter -->
   <main class="card">
     <h1>Danke! 🎉</h1>
     <p>Deine Anfrage wurde gesendet. Du kannst jetzt zur Formularseite zurückkehren oder diese Seite schließen.</p>
     <a class="btn" href="index.html">Zurück zum Formular</a>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Free2move
-  </footer>
+  <footer>© 2025 Free2move</footer>
 </body>
 </html>
 
