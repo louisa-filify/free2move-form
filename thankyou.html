@@ -14,7 +14,6 @@
       color: var(--ink);
     }
 
-    /* Header */
     header {
       background: var(--primary);
       height: 64px;
@@ -24,31 +23,31 @@
     }
     header img { height: 32px; }
 
-    /* Hero – nur das Bild, kein Overlay-Text */
+    /* Hero section */
     .hero {
       position: relative;
-      height: 420px;              /* genug Höhe für das Auto */
+      height: 420px;
       overflow: hidden;
     }
     .hero img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 40%; /* Bild vertikal etwas nach oben schieben */
+      object-position: center 40%;
       display: block;
     }
 
-    /* Karte unter dem Bild, leicht überlappend */
+    /* Card */
     .card {
       max-width: 800px;
-      margin: -80px auto 60px;   /* Überlappung nach oben, Abstand nach unten */
+      margin: -80px auto 60px;
       background: #fff;
       padding: 32px;
       border-radius: 16px;
       box-shadow: 0 12px 28px rgba(0,0,0,.14);
       text-align: center;
       position: relative;
-      z-index: 2;                /* vor dem Hero-Bild */
+      z-index: 2;
     }
     h1 {
       margin: 0 0 12px;
@@ -71,28 +70,21 @@
       text-align: center;
       color: var(--muted);
       font-size: 13px;
-      padding: 12px 0 28px;
-    }
-
-    @media (max-width: 740px){
-      .hero { height: 360px; }
-      .card { margin: -64px 16px 48px; padding: 24px; }
-      h1 { font-size: 24px; }
+      padding-bottom: 28px;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
-    <img src="17824973.png" alt="Free2move">
+    <img src="17824973.png" alt="Free2move Logo">
   </header>
 
-  <!-- Hero nur mit Bild -->
   <section class="hero">
-    <img src="free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg" alt="Free2move Banner">
+    <!-- Hier das richtige Bild -->
+    <img src="free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg" 
+         alt="Free2move Fiat 500e" loading="eager">
   </section>
 
-  <!-- Klarer Card-Block darunter -->
   <main class="card">
     <h1>Danke! 🎉</h1>
     <p>Deine Anfrage wurde gesendet. Du kannst jetzt zur Formularseite zurückkehren oder diese Seite schließen.</p>
@@ -102,6 +94,7 @@
   <footer>© 2025 Free2move</footer>
 </body>
 </html>
+
 
 
 
