@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Danke – Free2move</title>
+  <title>💜 Mit Free2move hinfahren – Voucher anfragen</title>
   <style>
     :root { --primary:#1E0046; --ink:#0A0A0A; --soft:#F5F7F9; --muted:#6C6C6C; }
     * { box-sizing: border-box; }
@@ -13,95 +13,105 @@
       background: var(--soft);
       color: var(--ink);
     }
-
-    /* Header */
     header {
       background: var(--primary);
       height: 64px;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
+      display:flex; align-items:center; padding:0 20px;
     }
-    header img { height: 32px; }
+    header img { height: 36px; }
 
-    /* Hero – nur das Bild, kein Overlay-Text */
-    .hero {
-      position: relative;
-      height: 420px;              /* genug Höhe für das Auto */
-      overflow: hidden;
-    }
-    .hero img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 40%; /* Bild vertikal etwas nach oben schieben */
-      display: block;
+    .wrap { max-width: 860px; margin: 24px auto 60px; padding: 0 16px; }
+    h1 { color: var(--primary); margin: 8px 0 6px; font-size: 26px; }
+    .lead { color: var(--muted); margin-bottom: 6px; }
+    .info-badge {
+      display:inline-block; margin: 8px 0 18px; padding: 8px 12px;
+      background:#fff; border:1px solid #e7e9ee; border-radius:12px; font-size:14px;
     }
 
-    /* Karte unter dem Bild, leicht überlappend */
-    .card {
-      max-width: 800px;
-      margin: -80px auto 60px;   /* Überlappung nach oben, Abstand nach unten */
-      background: #fff;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 12px 28px rgba(0,0,0,.14);
-      text-align: center;
-      position: relative;
-      z-index: 2;                /* vor dem Hero-Bild */
+    form {
+      background:#fff; border-radius:16px; padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
     }
-    h1 {
-      margin: 0 0 12px;
-      font-size: 28px;
-      color: var(--primary);
+    label { display:block; font-weight:600; margin: 14px 0 6px; }
+    input, select, textarea {
+      width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:12px;
+      font: inherit; background:#fff;
     }
-    p { margin: 0 0 18px; line-height: 1.5; }
+    textarea { min-height: 110px; resize: vertical; }
+    .row { display:grid; gap:14px; grid-template-columns: 1fr 1fr; }
+    .row > * { min-width: 0; }
+    .note { font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+    .actions { margin-top: 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
     .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 12px;
-      background: var(--primary);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
+      display:inline-block; padding: 12px 20px; border-radius: 12px;
+      background: var(--primary); color:#fff; text-decoration:none; font-weight:700;
+      border: 0; cursor: pointer;
     }
-    .btn:hover { filter: brightness(1.05); }
+    .btn:disabled { opacity:.6; cursor: not-allowed; }
+    .ghost { background: transparent; color: var(--primary); border:1px solid var(--primary); }
 
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      padding: 12px 0 28px;
-    }
-
-    @media (max-width: 740px){
-      .hero { height: 360px; }
-      .card { margin: -64px 16px 48px; padding: 24px; }
-      h1 { font-size: 24px; }
+    @media (max-width: 640px){
+      .row { grid-template-columns: 1fr; }
+      h1 { font-size: 22px; }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <img src="17824973.png" alt="Free2move">
   </header>
 
-  <!-- Hero nur mit Bild -->
-  <section class="hero">
-    <img src="free2move-co-branded-infleeting-fiat500e-id-8753_15870.jpg" alt="Free2move Banner">
-  </section>
+  <main class="wrap">
+    <h1>💜 Mit Free2move hinfahren</h1>
+    <p class="lead">
+      Nutze einfache Mobilität von A&nbsp;nach&nbsp;B – für Events oder im Alltag (Konzert, Flughafentransfer, Geburtstag, Night&nbsp;Out).
+    </p>
+    <div class="info-badge">Du erhältst einen Voucher im Wert von <strong>50&nbsp;€</strong>.</div>
 
-  <!-- Klarer Card-Block darunter -->
-  <main class="card">
-    <h1>Danke! 🎉</h1>
-    <p>Deine Anfrage wurde gesendet. Du kannst jetzt zur Formularseite zurückkehren oder diese Seite schließen.</p>
-    <a class="btn" href="index.html">Zurück zum Formular</a>
+    <!-- FORM -->
+    <form method="POST" action="https://script.google.com/macros/s/AKfycbxtvoSvnzWD4gWwTJNFY9oWxkDOEgx7oZlDT_UL6DA0D3KJFW8acnkOof7zInWS8h7z0A/exec">
+      <!-- fix 50 € silently passed along -->
+      <input type="hidden" name="amount" value="50" />
+
+      <label for="name">Dein Name*</label>
+      <input id="name" name="name" required placeholder="Vor- und Nachname" />
+
+      <label for="email">Deine E-Mail*</label>
+      <input id="email" name="email" type="email" required placeholder="name@mail.com" />
+
+      <label for="instagram">Instagram (Link zu deinem Profil)</label>
+      <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
+      <div class="note">Beispiel: https://www.instagram.com/deinhandle</div>
+
+      <label for="event">Event / Anlass*</label>
+      <input id="event" name="event" required placeholder="z. B. Konzert, Festival, Messe" />
+
+      <div class="row">
+        <div>
+          <label for="city">Stadt*</label>
+          <input id="city" name="city" required placeholder="Berlin, Hamburg, München …" />
+        </div>
+        <div>
+          <label for="date">Datum*</label>
+          <input id="date" name="date" type="date" required />
+        </div>
+      </div>
+
+      <label for="notes">Zusätzliche Infos</label>
+      <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
+
+      <div class="actions">
+        <button class="btn" type="submit">Anfrage absenden</button>
+        <a class="btn ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noreferrer">Events ansehen</a>
+      </div>
+
+      <div class="note">Mit dem Absenden stimmst du der Kontaktaufnahme per E-Mail zu.</div>
+    </form>
   </main>
-
-  <footer>© 2025 Free2move</footer>
 </body>
 </html>
+
 
 
 
