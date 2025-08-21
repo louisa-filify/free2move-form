@@ -8,15 +8,16 @@
   <style>
     :root{
       --primary:#1E0046;
-      --accent:#7C3AED;
       --ink:#0B0B0C;
       --soft:#F6F7FB;
-      --radius:18px;
-      --shadow-lg:0 20px 44px rgba(17,12,46,0.22);
+      --lav:#E6D8FF;          /* Akzentfarbe für Subline */
+      --radius:20px;
+      --shadow-lg:0 22px 48px rgba(20,12,46,.22);
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--soft);color:var(--ink)}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--soft);color:var(--ink)}
 
+    /* Topbar */
     .topbar{height:56px;display:flex;align-items:center;padding:0 14px;background:#20084a;color:#fff}
     .logo{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
     .logo img{height:26px;width:auto;border-radius:6px}
@@ -24,42 +25,74 @@
     /* HERO */
     .hero{
       position:relative;
+      z-index:1;               /* Hinter dem Formular */
       width:100%;
-      height:240px;
+      height:300px;            /* Höhe des Verlaufs */
+      display:flex;
+      align-items:center;
+      justify-content:center;
       background:linear-gradient(135deg,#3a0f6b 0%,#5a19b6 45%,#18a0f5 100%);
       color:#fff;
-      display:flex;align-items:center;justify-content:center;
-      text-align:center;padding:28px 16px;
+      text-align:center;
+      padding:28px 16px;
     }
-    .hero-inner{max-width:920px;width:100%}
-    .hero h1{margin:0 0 10px;font-size:24px;font-weight:800}
-    .hero p{margin:0 0 18px;font-size:15px;opacity:.95}
+    .hero-inner{max-width:960px;width:100%}
+    .hero h1{
+      margin:0 0 12px;
+      font-size:clamp(24px,4.2vw,40px);  /* GROßER */
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+    .hero .sub{
+      margin:0 0 22px;
+      font-size:clamp(14px,1.8vw,17px);  /* KLEINER */
+      color:var(--lav);                  /* andere Farbe (hell-lila) */
+      line-height:1.35;
+      font-weight:600;
+    }
     .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
     .btn{
-      padding:13px 18px;border-radius:999px;font-weight:700;text-decoration:none;
+      padding:13px 18px;border-radius:999px;font-weight:800;text-decoration:none;
       transition:.2s;cursor:pointer
     }
     .btn-primary{background:#fff;color:#1E0046}
-    .btn-ghost{border:1px solid rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.08)}
+    .btn-ghost{border:1px solid rgba(255,255,255,.45);color:#fff;background:rgba(255,255,255,.08)}
     .btn-primary:hover{filter:brightness(.96)}
     .btn-ghost:hover{background:rgba(255,255,255,.18)}
 
-    /* CARD */
-    .wrap{padding:0 16px 72px}
+    /* FORM CARD */
+    .wrap{padding:0 16px 80px}
     .card{
-      max-width:820px;margin:-64px auto 0;background:#fff;border-radius:22px;
-      padding:26px 24px 22px;box-shadow:var(--shadow-lg)
+      position:relative;
+      z-index:5;                          /* vor dem Verlauf */
+      max-width:860px;
+      margin:-72px auto 0;                /* leicht ins Hero gezogen */
+      background:#fff;
+      border-radius:22px;
+      padding:26px 24px 22px;
+      box-shadow:var(--shadow-lg)
     }
-    .card h2{text-align:center;color:var(--primary);margin:0 0 14px;font-size:22px}
+    .card h2{
+      text-align:center;color:var(--primary);
+      margin:0 0 16px;font-size:22px;font-weight:800
+    }
     .grid{display:grid;gap:12px}
     label{font-size:12px;color:#666;margin:6px 0 6px 4px;display:block}
-    input,textarea{width:100%;padding:12px 14px;border:1px solid #E7E8EF;border-radius:12px}
-    .submit{background:#2B0A63;color:#fff;border:none;padding:14px 18px;border-radius:999px;font-weight:900;cursor:pointer}
+    input,textarea{
+      width:100%;padding:12px 14px;border:1px solid #E7E8EF;border-radius:12px;
+      font-size:14px;background:#F8FAFF
+    }
+    textarea{min-height:110px;resize:vertical}
+    .submit{
+      display:inline-block;margin-top:6px;background:#2B0A63;color:#fff;border:none;
+      padding:14px 18px;border-radius:999px;font-weight:900;cursor:pointer
+    }
     .submit:hover{filter:brightness(1.05)}
     .hint{text-align:center;color:#777;font-size:12px;margin-top:12px}
   </style>
 </head>
 <body>
+  <!-- Topbar -->
   <div class="topbar">
     <div class="logo">
       <img src="NEWlogo.png" alt="Free2move" />
@@ -71,11 +104,13 @@
   <section class="hero">
     <div class="hero-inner">
       <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
-      <p>Fahre zu Events oder nutze Free2move für Alltag & Spontan-Trips.<br>
-         Du erhältst einen <b>Voucher im Wert von 50 €</b>.</p>
+      <p class="sub">
+        Fahre zu Events oder nutze Free2move für Alltag &amp; Spontan-Trips.
+        Du erhältst einen <strong>Voucher im Wert von 50 €</strong>.
+      </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
-        <a class="btn btn-ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank">Events anschauen</a>
+        <a class="btn btn-ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noopener">Events anschauen</a>
       </div>
     </div>
   </section>
@@ -87,57 +122,75 @@
       <div class="grid">
         <div>
           <label for="name">Dein Name</label>
-          <input id="name" name="name" type="text" required />
+          <input id="name" name="name" type="text" placeholder="Max Mustermann" required />
         </div>
+
         <div>
           <label for="email">Deine E-Mail</label>
-          <input id="email" name="email" type="email" required />
+          <input id="email" name="email" type="email" placeholder="dein.name@mail.com" required />
         </div>
+
         <div>
           <label for="instagram">Instagram (Link zu deinem Profil)</label>
-          <input id="instagram" name="instagram" type="url" />
+          <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
         </div>
+
         <div>
           <label for="occasion">Event / Anlass</label>
-          <input id="occasion" name="occasion" type="text" />
+          <input id="occasion" name="occasion" type="text" placeholder="z. B. Konzert, Festival, Messe" />
         </div>
+
         <div>
           <label for="city">Stadt</label>
-          <input id="city" name="city" type="text" />
+          <input id="city" name="city" type="text" placeholder="Berlin" />
         </div>
+
         <div>
           <label for="date">Datum</label>
           <input id="date" name="date" type="date" />
         </div>
+
         <div>
           <label for="notes">Zusätzliche Infos</label>
-          <textarea id="notes" name="notes"></textarea>
+          <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
         </div>
       </div>
+
       <button type="submit" class="submit">Anfrage absenden</button>
       <div class="hint">Formular ausfüllen (~1 Min.) – wir melden uns per E-Mail.</div>
     </form>
   </div>
 
   <script>
+    // Deine aktuelle Apps Script URL
     const GAS_URL = "https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec";
     const THANKYOU_URL = "thankyou.html";
 
     document.getElementById('voucherForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const form = e.target;
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        instagram: form.instagram.value,
-        occasion: form.occasion.value,
-        city: form.city.value,
-        date: form.date.value,
-        notes: form.notes.value,
-        amount: "50"
+      const f = e.target;
+      const payload = {
+        name: f.name.value.trim(),
+        email: f.email.value.trim(),
+        instagram: f.instagram.value.trim(),
+        occasion: f.occasion.value.trim(),
+        city: f.city.value.trim(),
+        date: f.date.value,
+        notes: f.notes.value.trim(),
+        amount: "50" // fix: standard 50 €
       };
-      await fetch(GAS_URL, {method:"POST",body:JSON.stringify(data)});
-      window.location.href = THANKYOU_URL;
+
+      try {
+        await fetch(GAS_URL, {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify(payload)
+        });
+      } catch(e) {
+        // Falls offline / Request blockiert -> trotzdem weiterleiten
+      } finally {
+        window.location.href = THANKYOU_URL;
+      }
     });
   </script>
 </body>
