@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Free2move – Voucher anfragen</title>
+  <title>💜 Mit Free2move hinfahren – Voucher anfragen</title>
+  <meta name="color-scheme" content="light only" />
   <style>
     :root{
       --primary:#1E0046;
@@ -11,135 +12,300 @@
       --ink:#0A0A0A;
       --muted:#6C6C6C;
       --soft:#F5F7F9;
-      --white:#ffffff;
+      --radius:16px;
+      --shadow:0 12px 30px rgba(0,0,0,.12);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
       color:var(--ink);
-      background:var(--soft);
+      background:linear-gradient(#f6f7fb,#f2f4f7);
     }
 
-    /* ===== HERO (HINTERGRUND) ===== */
+    /* Top bar */
+    .topbar{
+      height:56px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:0 16px;
+      position:relative;
+      z-index:3;
+    }
+    .topbar img{height:28px;width:auto;display:block}
+
+    /* HERO: eigener Layer im Hintergrund */
     .hero{
-      background: linear-gradient(135deg, #1E0046 0%, #551b86 40%, #6b28b5 70%, #00B3E6 100%);
-      padding: 40px 20px 180px; /* extra padding unten für Platz */
+      position:relative;
+      height:340px;                 /* Verlaufshöhe bis knapp vor "Dein Name" */
+      isolation:isolate;            /* eigener Stacking-Context */
+    }
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, #2b0a63 0%, #4c1d95 40%, #6d28d9 70%, #06b6d4 115%);
+      z-index:0;                    /* HINTER allem anderen */
+      pointer-events:none;          /* nichts blockieren */
+    }
+    .hero-inner{
+      position:relative;
+      z-index:1;                    /* Text über dem Verlauf */
+      max-width:900px;
+      margin:0 auto;
+      padding:48px 16px 0;
       text-align:center;
       color:#fff;
-      position: relative;
-      z-index: 1; /* Hintergrundebene */
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      position:absolute; left:16px; top:14px;
-      color:#cfd0ff; font-weight:600;
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      letter-spacing:.04em;
+      font-weight:700;
+      opacity:.95;
     }
-    .brand img{height:24px; width:auto; display:block}
-    .hero h1{ margin:40px 0 12px; font-size:30px; font-weight:800; }
-    .hero p{ margin:0; font-size:17px; opacity:.92; }
-    .hero-cta{
-      display:flex; gap:12px; justify-content:center; margin-top:22px;
+    h1{
+      margin:10px auto 10px;
+      font-size:clamp(24px, 3.6vw, 36px);
+      line-height:1.15;
+      font-weight:800;
+      max-width:960px;
+    }
+    .subtitle{
+      margin:0 auto 18px;
+      font-size:15px;
+      line-height:1.45;
+      max-width:880px;
+      opacity:.95;
+    }
+    .cta-group{
+      display:flex;
+      gap:12px;
+      justify-content:center;
       flex-wrap:wrap;
     }
     .btn{
-      display:inline-block; padding:12px 18px; border-radius:10px;
-      font-weight:700; text-decoration:none;
-      box-shadow:0 6px 16px rgba(0,0,0,.18);
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,.26);
+      background:rgba(255,255,255,.08);
+      color:#fff;
+      backdrop-filter:blur(6px);
     }
-    .btn-primary{ background:var(--white); color:var(--primary); }
-    .btn-secondary{ background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.3); }
-
-    /* ===== FORM CARD ===== */
-    .card{
-      max-width:720px;
-      margin:-120px auto 48px; /* überlappt das lila */
+    .btn-primary{
       background:#fff;
-      border-radius:16px;
-      padding:28px;
-      box-shadow:0 12px 28px rgba(0,0,0,.14);
-      position: relative;
-      z-index: 2; /* liegt vor dem Hero */
+      color:var(--primary);
+      border-color:#fff;
     }
-    .card h2{ text-align:center; margin:6px 0 20px; color:var(--primary); }
-    label{ display:block; font-size:14px; font-weight:700; margin-bottom:6px; }
-    input, textarea{
-      width:100%; padding:12px; border:1px solid #ddd; border-radius:10px;
-      font-size:15px;
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:none}
+
+    /* CONTENT */
+    main{
+      position:relative;
+      z-index:2;                    /* SICHER vor dem Verlauf */
+      margin-top:-48px;             /* Karte über den Verlauf schieben */
     }
-    input:focus, textarea:focus{
-      border-color:#c9b8ff; box-shadow:0 0 0 3px rgba(105,65,198,.15);
+
+    .note{
+      max-width:980px;
+      margin:0 auto 16px;
+      padding:14px 16px;
+      font-size:14px;
+      color:#111;
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.05);
+    }
+    .note b{font-weight:800}
+
+    .card{
+      max-width:760px;
+      margin:0 auto 56px;
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid #eef0f3;
+      padding:24px;
+    }
+    .card h2{
+      margin:4px 0 18px;
+      font-size:20px;
+      text-align:center;
+      color:#1E1E1E;
+    }
+
+    label{
+      display:block;
+      font-size:13px;
+      font-weight:700;
+      color:#374151;
+      margin:14px 0 6px;
+    }
+    input, textarea, select{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6e8eb;
+      background:#fff;
       outline:none;
+      font-size:15px;
+      line-height:1.2;
+      box-shadow:0 1px 0 rgba(0,0,0,.02) inset;
+      position:relative;
+      z-index:5;                    /* FIELDS LIEGEN VOR DEM VERLAUF */
     }
-    textarea{ min-height:80px }
+    input:focus, textarea:focus, select:focus{
+      border-color:#a78bfa;
+      box-shadow:0 0 0 3px rgba(167,139,250,.25);
+    }
+    textarea{min-height:120px; resize:vertical}
 
+    .actions{
+      display:flex;
+      justify-content:flex-start;
+      gap:12px;
+      margin-top:16px;
+    }
     .btn-submit{
-      background:var(--primary); color:#fff; border:none;
-      padding:12px 18px; border-radius:10px;
-      font-weight:700; cursor:pointer;
-      box-shadow:0 6px 16px rgba(30,0,70,.25);
+      background:var(--primary);
+      color:#fff;
+      border:none;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:800;
+      cursor:pointer;
     }
-    .btn-submit:hover{ background:#3c007a }
+    .btn-submit:disabled{opacity:.6;cursor:not-allowed}
 
-    .tiny{
-      text-align:center; color:var(--muted); font-size:12px; margin-top:10px;
+    .small{
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:10px;
     }
 
     @media (max-width:640px){
-      .hero{ padding-bottom:150px }
-      .card{ margin:-90px 12px 40px; padding:20px }
-      .hero h1{ font-size:24px }
+      .card{margin:0 12px 44px;padding:18px 14px}
+      .note{margin:0 12px 14px}
+      .hero{height:360px}
     }
   </style>
 </head>
 <body>
-  <!-- Hero Bereich -->
-  <header class="hero">
-    <div class="brand">
-      <img src="NEWlogo.png" alt="Free2move" />
-      <span>EVENTS 2025</span>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <img src="NEWlogo.png" alt="Free2move" />
+    <strong style="color:#6b7280;font-size:13px;">EVENTS 2025</strong>
+  </div>
+
+  <!-- HERO (liegt dahinter) -->
+  <section class="hero" aria-label="Einführung">
+    <div class="hero-bg"></div>
+
+    <div class="hero-inner">
+      <div class="eyebrow">💜 <span>Mit Free2move hinfahren – Voucher anfragen</span></div>
+      <h1>Fahre zu Events oder nutze Free2move für Alltag &amp; Spontan-Trips.
+        Du erhältst einen <span style="text-decoration:underline; text-decoration-thickness:3px;">Voucher im Wert von 50&nbsp;€</span>.
+      </h1>
+
+      <div class="cta-group">
+        <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
+        <a class="btn" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noopener">Events anschauen</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Hinweis -->
+    <div class="note">
+      Hinweis: Nach Freigabe erhältst du einen <b>Affiliate-Link</b>, über den deine Community die App herunterladen
+      und sich registrieren kann. Für <b>jeden Download/Registrierung über deinen Link erhältst du 5&nbsp;€</b>.
     </div>
 
-    <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
-    <p>Fahre zu Events oder nutze Free2move für Alltag & Spontan-Trips.<br>Du erhältst einen <b>Voucher im Wert von 50 €</b>.</p>
+    <!-- Formularkarte -->
+    <div id="form" class="card">
+      <h2>Voucher anfragen</h2>
 
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#voucher">Jetzt Voucher beantragen</a>
-      <a class="btn btn-secondary" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank">Events anschauen</a>
+      <form id="voucherForm" novalidate>
+        <label for="name">Dein Name</label>
+        <input id="name" name="name" type="text" placeholder="Max Mustermann" required />
+
+        <label for="email">Deine E-Mail</label>
+        <input id="email" name="email" type="email" placeholder="dein.name@mail.com" required />
+
+        <label for="instagram">Instagram (Link zu deinem Profil)</label>
+        <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
+
+        <label for="event">Event / Anlass</label>
+        <input id="event" name="event" type="text" placeholder="z. B. Konzert, Festival, Messe" required />
+
+        <label for="city">Stadt</label>
+        <input id="city" name="city" type="text" placeholder="Berlin" required />
+
+        <label for="date">Datum</label>
+        <input id="date" name="date" type="date" required />
+
+        <label for="notes">Zusätzliche Infos</label>
+        <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
+
+        <div class="actions">
+          <button class="btn-submit" type="submit" id="submitBtn">Anfrage absenden</button>
+        </div>
+
+        <div class="small">Formular ausfüllen (~1 Min.) – wir melden uns per E-Mail.</div>
+      </form>
     </div>
-  </header>
-
-  <!-- Formular -->
-  <main class="card" id="voucher">
-    <h2>Voucher anfragen</h2>
-    <form method="POST" action="https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec">
-      <label for="name">Dein Name</label>
-      <input id="name" name="name" type="text" placeholder="Max Mustermann" required />
-
-      <label for="email">Deine E-Mail</label>
-      <input id="email" name="email" type="email" placeholder="dein.name@mail.com" required />
-
-      <label for="instagram">Instagram (Link zu deinem Profil)</label>
-      <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
-
-      <label for="event">Event / Anlass</label>
-      <input id="event" name="event" type="text" placeholder="z. B. Konzert, Festival, Messe" />
-
-      <label for="city">Stadt</label>
-      <input id="city" name="city" type="text" placeholder="Berlin" />
-
-      <label for="date">Datum</label>
-      <input id="date" name="date" type="date" />
-
-      <label for="notes">Zusätzliche Infos</label>
-      <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
-
-      <br>
-      <button class="btn-submit" type="submit">Anfrage absenden</button>
-
-      <div class="tiny">Formular ausfüllen (≈1 Min.) – wir melden uns per E-Mail.</div>
-    </form>
   </main>
+
+  <script>
+    // === CONFIG ===
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec"; // <- deine aktuelle /exec URL
+    const THANKYOU_URL   = "thankyou.html";
+
+    const form = document.getElementById('voucherForm');
+    const btn  = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+
+      // Simple required-check
+      const required = ['name','email','event','city','date'];
+      for(const id of required){
+        const el = document.getElementById(id);
+        if(!el.value.trim()){
+          el.focus();
+          alert('Bitte alle Pflichtfelder ausfüllen.');
+          return;
+        }
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sende …';
+
+      try{
+        const data = new FormData(form);
+        // Optional: klarer Schlüsselnamen, falls du sie im Script brauchst
+        data.append('source', 'free2move-form');
+
+        const res = await fetch(APPS_SCRIPT_URL, { method:'POST', body:data, mode:'no-cors' });
+        // Apps Script Web App antwortet bei no-cors nicht lesbar – wir leiten einfach weiter:
+        window.location.href = THANKYOU_URL;
+      }catch(err){
+        console.error(err);
+        alert('Ups – das hat nicht geklappt. Bitte später erneut versuchen.');
+      }finally{
+        btn.disabled = false;
+        btn.textContent = 'Anfrage absenden';
+      }
+    });
+  </script>
 </body>
 </html>
 
