@@ -22,16 +22,13 @@
       background:var(--soft);
     }
 
-    /* ============ HERO (LANGER LILA HINTERGRUND) ============ */
+    /* ============ HERO (LILA HINTERGRUND BIS FORM) ============ */
     .hero{
       position:relative;
       color:#fff;
-      background: linear-gradient(135deg, #1E0046 0%, #551b86 45%, #6b28b5 70%, #00B3E6 100%);
-      /* Höhe + extra Padding, damit der lila Hintergrund „lang“ wirkt */
-      min-height: 320px;
-      padding: 18px 20px 150px; /* bottom groß halten */
+      background: linear-gradient(135deg, #1E0046 0%, #551b86 40%, #6b28b5 70%, #00B3E6 100%);
+      padding: 20px 20px 140px; /* größerer bottom-padding */
       text-align:center;
-      overflow:hidden;
     }
     .brand{
       display:flex; align-items:center; gap:10px;
@@ -40,14 +37,12 @@
     }
     .brand img{height:24px; width:auto; display:block}
     .hero h1{
-      margin:28px 0 10px;
-      font-size:28px; font-weight:800;
+      margin:40px 0 12px;
+      font-size:30px; font-weight:800;
     }
-    .hero p{
-      margin:0; opacity:.92;
-    }
+    .hero p{margin:0; opacity:.92; font-size:17px;}
     .hero-cta{
-      display:flex; gap:12px; justify-content:center; margin-top:18px;
+      display:flex; gap:12px; justify-content:center; margin-top:22px;
       flex-wrap:wrap;
     }
     .btn{
@@ -63,17 +58,15 @@
     /* ============ FORM CARD ============ */
     .card{
       max-width:720px;
-      margin:-90px auto 48px;  /* zieht die Karte in den Hero rein */
+      margin:-100px auto 48px;  /* schiebt Karte in den lila Bereich rein */
       background:#fff;
       border-radius:16px;
-      padding:24px;
+      padding:26px;
       box-shadow:0 12px 28px rgba(0,0,0,.14);
     }
     .card h2{ text-align:center; margin:6px 0 20px; color:var(--primary); }
     .row{ margin-bottom:14px }
-    label{
-      display:block; font-size:14px; font-weight:700; margin-bottom:6px;
-    }
+    label{ display:block; font-size:14px; font-weight:700; margin-bottom:6px; }
     input, textarea{
       width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px;
       font-size:15px; outline:none; background:#fff;
@@ -81,9 +74,7 @@
     input:focus, textarea:focus{ border-color:#c9b8ff; box-shadow:0 0 0 3px rgba(105,65,198,.15) }
     textarea{ min-height:84px; resize:vertical }
 
-    .submit{
-      display:flex; justify-content:flex-start;
-    }
+    .submit{ display:flex; justify-content:flex-start; }
     .btn-submit{
       background:var(--primary); color:#fff; border:none;
       padding:12px 18px; border-radius:10px; font-weight:800; cursor:pointer;
@@ -96,8 +87,7 @@
     }
 
     @media (max-width:640px){
-      .hero{ min-height: 280px; padding-bottom: 130px }
-      .brand span{ display:none } /* optional */
+      .hero{ padding-bottom:120px }
       .card{ margin:-80px 12px 40px; padding:20px }
       .hero h1{ font-size:24px }
     }
@@ -120,55 +110,47 @@
     </div>
   </header>
 
-  <!-- Formularkarte -->
+  <!-- Formular -->
   <main class="card" id="voucher">
     <h2>Voucher anfragen</h2>
-
     <form method="POST" action="https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec" accept-charset="UTF-8">
       <div class="row">
         <label for="name">Dein Name</label>
         <input id="name" name="name" type="text" placeholder="Max Mustermann" required />
       </div>
-
       <div class="row">
         <label for="email">Deine E-Mail</label>
         <input id="email" name="email" type="email" placeholder="dein.name@mail.com" required />
       </div>
-
       <div class="row">
         <label for="instagram">Instagram (Link zu deinem Profil)</label>
-        <input id="instagram" name="instagram" type="url" inputmode="url" placeholder="https://www.instagram.com/deinhandle" />
+        <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
       </div>
-
       <div class="row">
         <label for="event">Event / Anlass</label>
         <input id="event" name="event" type="text" placeholder="z. B. Konzert, Festival, Messe" />
       </div>
-
       <div class="row">
         <label for="city">Stadt</label>
         <input id="city" name="city" type="text" placeholder="Berlin" />
       </div>
-
       <div class="row">
         <label for="date">Datum</label>
         <input id="date" name="date" type="date" />
       </div>
-
       <div class="row">
         <label for="notes">Zusätzliche Infos</label>
         <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
       </div>
-
       <div class="submit">
         <button class="btn-submit" type="submit">Anfrage absenden</button>
       </div>
-
       <div class="tiny">Formular ausfüllen (≈1 Min.) – wir melden uns per E-Mail.</div>
     </form>
   </main>
 </body>
 </html>
+
 
 
 
