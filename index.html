@@ -4,229 +4,227 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mit Free2move hinfahren – Voucher anfragen</title>
+  <meta name="color-scheme" content="light only" />
   <style>
-    :root {
+    :root{
       --primary:#1E0046;
       --ink:#0B0B0C;
-      --soft:#F6F7FB;
-      --lav:#BFE0FF;
-      --radius:20px;
-      --shadow-lg:0 22px 48px rgba(20,12,46,.22);
+      --muted:#8E95A4;            /* Placeholder / subtile text */
+      --field:#F6F8FB;            /* Input background */
+      --white:#FFFFFF;
+      --btn:#2B1A78;              /* CTA */
+      --btn-hover:#3B29A0;
+      --shadow:0 18px 50px rgba(31,20,77,.18);
+      --radius:18px;
+      --radius-sm:12px;
+      --max:780px;
     }
+
     *{box-sizing:border-box}
-    body {
+    html,body{height:100%}
+    body{
       margin:0;
-      font-family: Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      background:var(--soft);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink);
+      /* FULL-PAGE FREE2MOVE GRADIENT */
+      background:
+        radial-gradient(1200px 700px at 95% 15%, #08B0FF 0%, rgba(8,176,255,0.0) 55%),
+        linear-gradient(135deg, #3E0B8A 0%, #2B0A70 36%, #1E0A64 55%, #0E0A5F 72%, #0083FF 100%);
+      background-attachment: fixed;
+    }
+
+    .page{
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Top bar: just logo + name (no heavy stripe) */
+    .top{
+      display:flex; align-items:center; gap:10px;
+      padding:14px 18px;
+    }
+    .top img{height:26px; width:auto; border-radius:6px}
+    .top span{color:var(--white); font-weight:600}
+
+    /* Hero headline */
+    .hero{
+      text-align:center;
+      padding:26px 16px 24px;
+      color:#fff;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:14px; opacity:.95;
+    }
+    .kicker .dot{font-size:18px}
+    h1{
+      margin:8px auto 10px;
+      max-width:1000px;
+      font-size:34px; line-height:1.18;
+      font-weight:800;           /* a bit more bold */
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0 auto 18px;
+      max-width:900px;
+      font-size:15px; line-height:1.5;
+      opacity:.95;
+    }
+
+    .cta-row{
+      display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-block; border:0; cursor:pointer;
+      padding:12px 18px; border-radius:999px; font-weight:700;
+      text-decoration:none; transition:.18s ease-in-out;
+    }
+    .btn-primary{ background:var(--white); color:var(--btn) }
+    .btn-primary:hover{ filter:brightness(.96) }
+    .btn-ghost{
+      background:rgba(255,255,255,.13); color:#fff; 
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);
+    }
+    .btn-ghost:hover{ background:rgba(255,255,255,.20) }
+
+    /* FORM CARD (white, foreground) */
+    .wrap{
+      width:100%;
+      padding:22px 16px 70px;
+      display:flex; justify-content:center;
+    }
+    .card{
+      width:100%; max-width:var(--max);
+      background:var(--white);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px 18px 26px;
+    }
+
+    .card h2{
+      margin:0 0 16px;
+      font-size:20px; text-align:center;
+      color:var(--primary); font-weight:700;
+    }
+
+    .grid{ display:grid; gap:12px }
+
+    label{
+      display:block; margin:2px 0 6px;
+      font-size:13px; font-weight:600;
+      color:var(--ink); /* BLACK labels */
+    }
+    input, textarea{
+      width:100%;
+      border:1px solid #E6E9F0;
+      background:var(--field);
+      border-radius:var(--radius-sm);
+      padding:12px 14px; font-size:14px; outline:none;
+      transition: box-shadow .16s, border-color .16s, background .16s;
       color:var(--ink);
     }
+    input::placeholder, textarea::placeholder{ color:var(--muted) } /* LIGHT GREY placeholders */
+    input:focus, textarea:focus{
+      background:#fff; border-color:#C7D2FE;
+      box-shadow:0 0 0 3px rgba(99,102,241,.25);
+    }
+    textarea{ min-height:120px; resize:vertical }
 
-    /* LOGO HEADER (ohne lila Balken) */
-    .logo-bar {
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:16px 20px;
+    .row{ display:grid; gap:12px; grid-template-columns:1fr }
+    .actions{ display:flex; justify-content:flex-start; margin-top:8px }
+    .submit{
+      background:var(--btn); color:#fff; border:0;
+      padding:12px 18px; border-radius:999px; font-weight:700;
+      cursor:pointer; transition:.18s background;
     }
-    .logo-bar img {
-      height:32px; width:auto; border-radius:6px;
-    }
-    .logo-bar span {
-      font-size:16px;
-      font-weight:600;
-      color:var(--primary);
+    .submit:hover{ background:var(--btn-hover) }
+
+    .fine-print{
+      margin-top:10px; text-align:center; font-size:12px; color:#7C8698;
     }
 
-    /* HERO */
-    .hero {
-      width:100%;
-      background:linear-gradient(135deg,#3a0f6b 0%,#5a19b6 45%,#18a0f5 100%);
-      color:#fff;
-      text-align:center;
-      padding:40px 16px 60px; /* viel Abstand nach unten */
-    }
-    .hero h1 {
-      margin:0 0 12px;
-      font-size:clamp(24px,4vw,34px);
-      font-weight:400; /* nicht fett, cleaner */
-    }
-    .hero .sub {
-      margin:0 0 28px;
-      font-size:clamp(14px,1.8vw,17px);
-      color:var(--lav);
-      line-height:1.4;
-    }
-    .cta-row {
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .btn {
-      padding:13px 18px;
-      border-radius:999px;
-      font-weight:600;
-      text-decoration:none;
-      transition:.2s;
-      cursor:pointer;
-    }
-    .btn-primary {
-      background:#fff;
-      color:#1E0046;
-    }
-    .btn-ghost {
-      border:1px solid rgba(255,255,255,.45);
-      color:#fff;
-      background:rgba(255,255,255,.08);
-    }
-    .btn-primary:hover{filter:brightness(.96)}
-    .btn-ghost:hover{background:rgba(255,255,255,.18)}
-
-    /* FORM CARD */
-    .wrap {padding:0 16px 80px; margin-top:40px;} /* zusätzlicher Abstand */
-    .card {
-      max-width:860px;
-      margin:0 auto;
-      background:#fff;
-      border-radius:22px;
-      padding:28px 24px 24px;
-      box-shadow:var(--shadow-lg);
-    }
-    .card h2 {
-      text-align:center;
-      color:var(--primary);
-      margin:0 0 18px;
-      font-size:22px;
-      font-weight:600;
-    }
-    .grid {display:grid;gap:12px}
-    label {
-      font-size:12px;
-      color:#666;
-      margin:6px 0 6px 4px;
-      display:block;
-    }
-    input, textarea {
-      width:100%;
-      padding:12px 14px;
-      border:1px solid #E7E8EF;
-      border-radius:12px;
-      font-size:14px;
-      background:#F8FAFF;
-    }
-    textarea {min-height:110px; resize:vertical}
-    .submit {
-      display:inline-block;
-      margin-top:6px;
-      background:#2B0A63;
-      color:#fff;
-      border:none;
-      padding:14px 18px;
-      border-radius:999px;
-      font-weight:700;
-      cursor:pointer;
-    }
-    .submit:hover {filter:brightness(1.05)}
-    .hint {
-      text-align:center;
-      color:#777;
-      font-size:12px;
-      margin-top:12px;
+    @media (min-width:720px){
+      .hero{ padding-top:30px }
+      h1{ font-size:38px }
+      .card{ padding:24px 22px 30px }
     }
   </style>
 </head>
 <body>
-  <!-- Logo + Free2move -->
-  <div class="logo-bar">
-    <img src="NEWlogo.png" alt="Free2move" />
-    <span>Free2move</span>
-  </div>
+  <div class="page">
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
-    <p class="sub">
-      Fahre zu Events oder nutze Free2move für Alltag &amp; Spontan-Trips.  
-      Du erhältst einen <strong>Voucher im Wert von 50 €</strong>.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
-      <a class="btn btn-ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noopener">Events anschauen</a>
-    </div>
-  </section>
+    <!-- Slim header with logo -->
+    <header class="top">
+      <img src="NEWlogo.png" alt="Free2move" />
+      <span>Free2move</span>
+    </header>
 
-  <!-- FORM -->
-  <div class="wrap" id="form">
-    <form class="card" id="voucherForm">
-      <h2>Voucher anfragen</h2>
-      <div class="grid">
-        <div>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="kicker"><span class="dot">💜</span> Mit Free2move hinfahren</div>
+      <h1>Voucher anfragen</h1>
+      <p class="sub">
+        Fahre zu Events oder nutze Free2move für Alltag &amp; Spontan-Trips.
+        Du erhältst einen <strong>Voucher im Wert von 50&nbsp;€</strong>.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
+        <a class="btn btn-ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noopener">Events anschauen</a>
+      </div>
+    </section>
+
+    <!-- Form card -->
+    <main class="wrap" id="form" role="main">
+      <form class="card grid" method="POST" action="https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec">
+        <h2>Voucher anfragen</h2>
+
+        <div class="field">
           <label for="name">Dein Name</label>
           <input id="name" name="name" type="text" placeholder="Max Mustermann" required />
         </div>
-        <div>
+
+        <div class="field">
           <label for="email">Deine E-Mail</label>
           <input id="email" name="email" type="email" placeholder="dein.name@mail.com" required />
         </div>
-        <div>
+
+        <div class="field">
           <label for="instagram">Instagram (Link zu deinem Profil)</label>
           <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
         </div>
-        <div>
-          <label for="occasion">Event / Anlass</label>
-          <input id="occasion" name="occasion" type="text" placeholder="z. B. Konzert, Festival, Messe" />
+
+        <div class="field">
+          <label for="event">Event / Anlass</label>
+          <input id="event" name="event" type="text" placeholder="z. B. Konzert, Festival, Messe" />
         </div>
-        <div>
+
+        <div class="field">
           <label for="city">Stadt</label>
           <input id="city" name="city" type="text" placeholder="Berlin" />
         </div>
-        <div>
+
+        <div class="field">
           <label for="date">Datum</label>
           <input id="date" name="date" type="date" />
         </div>
-        <div>
+
+        <div class="field">
           <label for="notes">Zusätzliche Infos</label>
           <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
         </div>
-      </div>
-      <button type="submit" class="submit">Anfrage absenden</button>
-      <div class="hint">Formular ausfüllen (~1 Min.) – wir melden uns per E-Mail.</div>
-    </form>
+
+        <div class="actions">
+          <button class="submit" type="submit">Anfrage absenden</button>
+        </div>
+
+        <div class="fine-print">Formular ausfüllen (≈1 Min.) – wir melden uns per E-Mail.</div>
+      </form>
+    </main>
+
   </div>
-
-  <script>
-    const GAS_URL = "https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec";
-    const THANKYOU_URL = "thankyou.html";
-
-    document.getElementById('voucherForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const f = e.target;
-      const payload = {
-        name: f.name.value.trim(),
-        email: f.email.value.trim(),
-        instagram: f.instagram.value.trim(),
-        occasion: f.occasion.value.trim(),
-        city: f.city.value.trim(),
-        date: f.date.value,
-        notes: f.notes.value.trim(),
-        amount: "50"
-      };
-
-      try {
-        await fetch(GAS_URL, {
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify(payload)
-        });
-      } catch(e) {}
-      finally {
-        window.location.href = THANKYOU_URL;
-      }
-    });
-  </script>
 </body>
 </html>
-
 
 
 
