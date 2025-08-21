@@ -10,12 +10,18 @@
       --primary:#1E0046;
       --ink:#0B0B0C;
       --soft:#F6F7FB;
-      --lav:#E6D8FF;          /* Akzentfarbe für Subline */
+      --lav:#BFE0FF;                 /* hellblau für Subline/Accent */
       --radius:20px;
       --shadow-lg:0 22px 48px rgba(20,12,46,.22);
+      --heroH:300px;                 /* Höhe des Verlaufs */
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--soft);color:var(--ink)}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--soft);
+      color:var(--ink);
+    }
 
     /* Topbar */
     .topbar{height:56px;display:flex;align-items:center;padding:0 14px;background:#20084a;color:#fff}
@@ -25,28 +31,29 @@
     /* HERO */
     .hero{
       position:relative;
-      z-index:1;               /* Hinter dem Formular */
+      z-index:1; /* bleibt hinter dem Formular */
       width:100%;
-      height:300px;            /* Höhe des Verlaufs */
+      height:var(--heroH);
       display:flex;
       align-items:center;
       justify-content:center;
       background:linear-gradient(135deg,#3a0f6b 0%,#5a19b6 45%,#18a0f5 100%);
       color:#fff;
       text-align:center;
-      padding:28px 16px;
+      padding:28px 16px 36px; /* etwas mehr unten, damit Luft entsteht */
     }
     .hero-inner{max-width:960px;width:100%}
+
     .hero h1{
-      margin:0 0 12px;
-      font-size:clamp(24px,4.2vw,40px);  /* GROßER */
-      font-weight:900;
-      letter-spacing:.2px;
+      margin:0 0 10px;
+      font-size:clamp(24px,4vw,36px); /* kleiner & nicht mehr so bold */
+      font-weight:700;                /* weniger Bold als vorher */
+      letter-spacing:.15px;
     }
     .hero .sub{
       margin:0 0 22px;
-      font-size:clamp(14px,1.8vw,17px);  /* KLEINER */
-      color:var(--lav);                  /* andere Farbe (hell-lila) */
+      font-size:clamp(14px,1.8vw,17px);
+      color:var(--lav);               /* hellblau */
       line-height:1.35;
       font-weight:600;
     }
@@ -60,13 +67,18 @@
     .btn-primary:hover{filter:brightness(.96)}
     .btn-ghost:hover{background:rgba(255,255,255,.18)}
 
+    /* Abstand zwischen Hero & Form */
+    .section-gap{
+      height:22px; /* sorgt für klaren Abstand */
+    }
+
     /* FORM CARD */
     .wrap{padding:0 16px 80px}
     .card{
       position:relative;
       z-index:5;                          /* vor dem Verlauf */
       max-width:860px;
-      margin:-72px auto 0;                /* leicht ins Hero gezogen */
+      margin:0 auto;                      /* KEIN Überlappen mehr */
       background:#fff;
       border-radius:22px;
       padding:26px 24px 22px;
@@ -115,6 +127,9 @@
     </div>
   </section>
 
+  <!-- Abstand zwischen Hero und Formular -->
+  <div class="section-gap" aria-hidden="true"></div>
+
   <!-- FORM -->
   <div class="wrap" id="form">
     <form class="card" id="voucherForm">
@@ -162,7 +177,7 @@
   </div>
 
   <script>
-    // Deine aktuelle Apps Script URL
+    // Apps Script POST-Endpoint (deine aktuelle URL)
     const GAS_URL = "https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec";
     const THANKYOU_URL = "thankyou.html";
 
@@ -187,7 +202,7 @@
           body: JSON.stringify(payload)
         });
       } catch(e) {
-        // Falls offline / Request blockiert -> trotzdem weiterleiten
+        // falls Request blockiert/timeout -> trotzdem weiterleiten
       } finally {
         window.location.href = THANKYOU_URL;
       }
