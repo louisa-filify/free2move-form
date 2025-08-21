@@ -4,131 +4,156 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mit Free2move hinfahren – Voucher anfragen</title>
-  <meta name="color-scheme" content="light only" />
   <style>
-    :root{
+    :root {
       --primary:#1E0046;
       --ink:#0B0B0C;
       --soft:#F6F7FB;
-      --lav:#BFE0FF;                 /* hellblau für Subline/Accent */
+      --lav:#BFE0FF;
       --radius:20px;
       --shadow-lg:0 22px 48px rgba(20,12,46,.22);
-      --heroH:300px;                 /* Höhe des Verlaufs */
     }
     *{box-sizing:border-box}
-    body{
+    body {
       margin:0;
-      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      font-family: Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       background:var(--soft);
       color:var(--ink);
     }
 
-    /* Topbar */
-    .topbar{height:56px;display:flex;align-items:center;padding:0 14px;background:#20084a;color:#fff}
-    .logo{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
-    .logo img{height:26px;width:auto;border-radius:6px}
-
-    /* HERO */
-    .hero{
-      position:relative;
-      z-index:1; /* bleibt hinter dem Formular */
-      width:100%;
-      height:var(--heroH);
+    /* LOGO HEADER (ohne lila Balken) */
+    .logo-bar {
       display:flex;
       align-items:center;
-      justify-content:center;
+      gap:10px;
+      padding:16px 20px;
+    }
+    .logo-bar img {
+      height:32px; width:auto; border-radius:6px;
+    }
+    .logo-bar span {
+      font-size:16px;
+      font-weight:600;
+      color:var(--primary);
+    }
+
+    /* HERO */
+    .hero {
+      width:100%;
       background:linear-gradient(135deg,#3a0f6b 0%,#5a19b6 45%,#18a0f5 100%);
       color:#fff;
       text-align:center;
-      padding:28px 16px 36px; /* etwas mehr unten, damit Luft entsteht */
+      padding:40px 16px 60px; /* viel Abstand nach unten */
     }
-    .hero-inner{max-width:960px;width:100%}
-
-    .hero h1{
-      margin:0 0 10px;
-      font-size:clamp(24px,4vw,36px); /* kleiner & nicht mehr so bold */
-      font-weight:700;                /* weniger Bold als vorher */
-      letter-spacing:.15px;
+    .hero h1 {
+      margin:0 0 12px;
+      font-size:clamp(24px,4vw,34px);
+      font-weight:400; /* nicht fett, cleaner */
     }
-    .hero .sub{
-      margin:0 0 22px;
+    .hero .sub {
+      margin:0 0 28px;
       font-size:clamp(14px,1.8vw,17px);
-      color:var(--lav);               /* hellblau */
-      line-height:1.35;
+      color:var(--lav);
+      line-height:1.4;
+    }
+    .cta-row {
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn {
+      padding:13px 18px;
+      border-radius:999px;
       font-weight:600;
+      text-decoration:none;
+      transition:.2s;
+      cursor:pointer;
     }
-    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .btn{
-      padding:13px 18px;border-radius:999px;font-weight:800;text-decoration:none;
-      transition:.2s;cursor:pointer
+    .btn-primary {
+      background:#fff;
+      color:#1E0046;
     }
-    .btn-primary{background:#fff;color:#1E0046}
-    .btn-ghost{border:1px solid rgba(255,255,255,.45);color:#fff;background:rgba(255,255,255,.08)}
+    .btn-ghost {
+      border:1px solid rgba(255,255,255,.45);
+      color:#fff;
+      background:rgba(255,255,255,.08);
+    }
     .btn-primary:hover{filter:brightness(.96)}
     .btn-ghost:hover{background:rgba(255,255,255,.18)}
 
-    /* Abstand zwischen Hero & Form */
-    .section-gap{
-      height:22px; /* sorgt für klaren Abstand */
-    }
-
     /* FORM CARD */
-    .wrap{padding:0 16px 80px}
-    .card{
-      position:relative;
-      z-index:5;                          /* vor dem Verlauf */
+    .wrap {padding:0 16px 80px; margin-top:40px;} /* zusätzlicher Abstand */
+    .card {
       max-width:860px;
-      margin:0 auto;                      /* KEIN Überlappen mehr */
+      margin:0 auto;
       background:#fff;
       border-radius:22px;
-      padding:26px 24px 22px;
-      box-shadow:var(--shadow-lg)
+      padding:28px 24px 24px;
+      box-shadow:var(--shadow-lg);
     }
-    .card h2{
-      text-align:center;color:var(--primary);
-      margin:0 0 16px;font-size:22px;font-weight:800
+    .card h2 {
+      text-align:center;
+      color:var(--primary);
+      margin:0 0 18px;
+      font-size:22px;
+      font-weight:600;
     }
-    .grid{display:grid;gap:12px}
-    label{font-size:12px;color:#666;margin:6px 0 6px 4px;display:block}
-    input,textarea{
-      width:100%;padding:12px 14px;border:1px solid #E7E8EF;border-radius:12px;
-      font-size:14px;background:#F8FAFF
+    .grid {display:grid;gap:12px}
+    label {
+      font-size:12px;
+      color:#666;
+      margin:6px 0 6px 4px;
+      display:block;
     }
-    textarea{min-height:110px;resize:vertical}
-    .submit{
-      display:inline-block;margin-top:6px;background:#2B0A63;color:#fff;border:none;
-      padding:14px 18px;border-radius:999px;font-weight:900;cursor:pointer
+    input, textarea {
+      width:100%;
+      padding:12px 14px;
+      border:1px solid #E7E8EF;
+      border-radius:12px;
+      font-size:14px;
+      background:#F8FAFF;
     }
-    .submit:hover{filter:brightness(1.05)}
-    .hint{text-align:center;color:#777;font-size:12px;margin-top:12px}
+    textarea {min-height:110px; resize:vertical}
+    .submit {
+      display:inline-block;
+      margin-top:6px;
+      background:#2B0A63;
+      color:#fff;
+      border:none;
+      padding:14px 18px;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .submit:hover {filter:brightness(1.05)}
+    .hint {
+      text-align:center;
+      color:#777;
+      font-size:12px;
+      margin-top:12px;
+    }
   </style>
 </head>
 <body>
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="logo">
-      <img src="NEWlogo.png" alt="Free2move" />
-      <span>EVENTS 2025</span>
-    </div>
+  <!-- Logo + Free2move -->
+  <div class="logo-bar">
+    <img src="NEWlogo.png" alt="Free2move" />
+    <span>Free2move</span>
   </div>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-inner">
-      <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
-      <p class="sub">
-        Fahre zu Events oder nutze Free2move für Alltag &amp; Spontan-Trips.
-        Du erhältst einen <strong>Voucher im Wert von 50 €</strong>.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
-        <a class="btn btn-ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noopener">Events anschauen</a>
-      </div>
+    <h1>💜 Mit Free2move hinfahren – Voucher anfragen</h1>
+    <p class="sub">
+      Fahre zu Events oder nutze Free2move für Alltag &amp; Spontan-Trips.  
+      Du erhältst einen <strong>Voucher im Wert von 50 €</strong>.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#form">Jetzt Voucher beantragen</a>
+      <a class="btn btn-ghost" href="https://filfiy.notion.site/Free2move-Events-2025-254bfda9ee958080ad1ed16c3e64dafa" target="_blank" rel="noopener">Events anschauen</a>
     </div>
   </section>
-
-  <!-- Abstand zwischen Hero und Formular -->
-  <div class="section-gap" aria-hidden="true"></div>
 
   <!-- FORM -->
   <div class="wrap" id="form">
@@ -139,45 +164,37 @@
           <label for="name">Dein Name</label>
           <input id="name" name="name" type="text" placeholder="Max Mustermann" required />
         </div>
-
         <div>
           <label for="email">Deine E-Mail</label>
           <input id="email" name="email" type="email" placeholder="dein.name@mail.com" required />
         </div>
-
         <div>
           <label for="instagram">Instagram (Link zu deinem Profil)</label>
           <input id="instagram" name="instagram" type="url" placeholder="https://www.instagram.com/deinhandle" />
         </div>
-
         <div>
           <label for="occasion">Event / Anlass</label>
           <input id="occasion" name="occasion" type="text" placeholder="z. B. Konzert, Festival, Messe" />
         </div>
-
         <div>
           <label for="city">Stadt</label>
           <input id="city" name="city" type="text" placeholder="Berlin" />
         </div>
-
         <div>
           <label for="date">Datum</label>
           <input id="date" name="date" type="date" />
         </div>
-
         <div>
           <label for="notes">Zusätzliche Infos</label>
           <textarea id="notes" name="notes" placeholder="z. B. Content-Idee, weitere Links …"></textarea>
         </div>
       </div>
-
       <button type="submit" class="submit">Anfrage absenden</button>
       <div class="hint">Formular ausfüllen (~1 Min.) – wir melden uns per E-Mail.</div>
     </form>
   </div>
 
   <script>
-    // Apps Script POST-Endpoint (deine aktuelle URL)
     const GAS_URL = "https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec";
     const THANKYOU_URL = "thankyou.html";
 
@@ -192,25 +209,23 @@
         city: f.city.value.trim(),
         date: f.date.value,
         notes: f.notes.value.trim(),
-        amount: "50" // fix: standard 50 €
+        amount: "50"
       };
 
       try {
         await fetch(GAS_URL, {
-          method: "POST",
-          headers: {"Content-Type":"application/json"},
-          body: JSON.stringify(payload)
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify(payload)
         });
-      } catch(e) {
-        // falls Request blockiert/timeout -> trotzdem weiterleiten
-      } finally {
+      } catch(e) {}
+      finally {
         window.location.href = THANKYOU_URL;
       }
     });
   </script>
 </body>
 </html>
-
 
 
 
