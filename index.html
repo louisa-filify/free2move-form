@@ -8,138 +8,119 @@
   <style>
     :root{
       --primary:#1E0046;
-      --accent:#00B3E6;
-      --ink:#0A0A0A;
-      --soft:#F5F7F9;
-      --muted:#6C6C6C;
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.12);
-      --shadow-lg:0 18px 50px rgba(0,0,0,.18);
+      --accent:#7C3AED;
+      --ink:#0B0B0C;
+      --soft:#F6F7FB;
+      --muted:#6B7280;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(17, 12, 46, 0.15);
+      --shadow-lg:0 20px 44px rgba(17, 12, 46, 0.22);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       line-height:1.35;
       color:var(--ink);
       background:var(--soft);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    /* ---------- Header / Logo ---------- */
+    /* ---------- Topbar ---------- */
     .topbar{
-      height:64px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:0 18px;
-      color:#fff;
-      background:var(--primary);
-    }
-    .logo{
+      height:56px;
       display:flex; align-items:center; gap:10px;
-      font-weight:600; font-size:14px; opacity:.9;
+      padding:0 14px;
+      color:#fff; background:#20084a;
     }
-    .logo img{height:28px; width:auto; display:block; border-radius:6px}
+    .logo{display:flex; align-items:center; gap:8px; font-weight:600; font-size:13px; opacity:.95}
+    .logo img{height:26px; width:auto; border-radius:6px; display:block}
 
-    /* ---------- Hero (langer Verlauf) ---------- */
+    /* ---------- HERO (as in screenshot) ---------- */
     .hero{
       position:relative;
       width:100%;
-      height:340px;           /* Länge des lila BG – wie beim Old Great Form */
-      background:linear-gradient(135deg,#331158 0%, #5a19b6 45%, #18a0f5 100%);
+      height:240px; /* height like OLD GREAT FORM */
+      background:linear-gradient(135deg, #3a0f6b 0%, #5a19b6 45%, #18a0f5 100%);
       color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:32px 16px;
-      overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; padding:28px 16px;
     }
-    .hero-inner{max-width:980px; width:100%}
-    .eyebrow{font-weight:700; letter-spacing:.2px; opacity:.9; margin-bottom:8px}
+    .hero-inner{max-width:920px; width:100%}
+    .eyebrow{
+      font-weight:800; letter-spacing:.15px; opacity:.92; margin-bottom:10px;
+      font-size:15px;
+    }
     h1{
-      margin:0 0 8px;
-      font-size:40px; line-height:1.1;
+      margin:0 0 8px; font-weight:800;
+      font-size:28px; line-height:1.18; letter-spacing:.2px;
     }
-    .sub{
-      margin:0 0 18px;
-      font-size:16px; opacity:.95;
-    }
+    .sub{margin:0 0 16px; font-size:14px; opacity:.96}
     .sub b{color:#fff}
+
     .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-
     .btn{
-      display:inline-block; font-weight:700; text-decoration:none;
-      padding:14px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.28);
-      backdrop-filter:saturate(130%) blur(2px);
-      box-shadow:0 6px 16px rgba(0,0,0,.15);
+      display:inline-block; text-decoration:none; font-weight:800;
+      padding:13px 18px; border-radius:999px; border:1px solid rgba(255,255,255,.32);
+      color:#fff; background:rgba(255,255,255,.06);
+      box-shadow:0 8px 20px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.15);
+      transition:transform .06s ease, filter .15s ease, background .15s ease;
+      backdrop-filter:saturate(120%) blur(2px);
     }
-    .btn-primary{ background:#fff; color:var(--primary); border-color:#fff; }
-    .btn-ghost{ color:#fff; }
-    .btn-primary:hover{ filter:brightness(.96) }
-    .btn-ghost:hover{ background:rgba(255,255,255,.1) }
-
-    /* Hinweis-Badge */
-    .note{
-      position:relative;
-      margin:-22px auto 0;
-      max-width:980px;
-      background:#fff;
-      border-radius:12px;
-      padding:12px 16px;
-      box-shadow:var(--shadow);
-      text-align:center;
-      color:#333;
-      font-size:14px;
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{
+      background:#ffffff; color:#1E0046; border-color:#fff;
+      box-shadow:0 10px 22px rgba(30,0,70,.28), inset 0 1px 0 rgba(255,255,255,.55);
     }
-    .note b{color:#000}
+    .btn-primary:hover{filter:brightness(.97)}
+    .btn-ghost:hover{background:rgba(255,255,255,.12)}
 
-    /* ---------- Karte / Formular ---------- */
-    .wrap{padding:28px 16px 64px}
+    /* ---------- FORM CARD (overlapping) ---------- */
+    .wrap{padding:0 16px 72px}
     .card{
-      max-width:820px; margin:0 auto;
-      background:#fff; border-radius:var(--radius);
-      box-shadow:var(--shadow-lg);
-      padding:28px 24px 22px;
+      max-width:820px; margin: -64px auto 0; /* pull up into the gradient */
+      background:#fff; border-radius:22px;
+      padding:26px 24px 22px; box-shadow:var(--shadow-lg);
+      border:1px solid rgba(20, 18, 35, .06);
     }
     .card h2{
-      margin:0 0 14px; text-align:center; color:var(--primary)
+      margin:0 0 14px; text-align:center; color:var(--primary);
+      font-size:22px; letter-spacing:.2px;
     }
-    .grid{display:grid; gap:14px}
-    label{font-size:12px; color:#5b5b5b; display:block; margin-bottom:6px}
+    .grid{display:grid; gap:12px}
+    label{display:block; font-size:12px; color:#666; margin:6px 0 6px 4px}
     input, textarea{
       width:100%; font:inherit; padding:12px 14px;
-      border:1px solid #e4e6ea; border-radius:10px; background:#f9fafb;
+      border:1px solid #E7E8EF; border-radius:12px; background:#FBFCFF;
       outline:none; transition:box-shadow .15s, border-color .15s, background .15s;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);
     }
     input:focus, textarea:focus{
-      border-color:#cfd6ff; background:#fff;
-      box-shadow:0 0 0 4px rgba(99,102,241,.15);
+      border-color:#C7D2FE; background:#fff;
+      box-shadow:0 0 0 4px rgba(99,102,241,.18);
     }
     textarea{min-height:110px; resize:vertical}
 
-    .actions{display:flex; justify-content:flex-start; gap:12px; margin-top:6px}
+    .actions{display:flex; justify-content:flex-start; gap:12px; margin-top:10px}
     .submit{
-      background:var(--primary); color:#fff; border:none;
-      padding:14px 18px; border-radius:12px; font-weight:800; cursor:pointer;
-      box-shadow:0 10px 18px rgba(30,0,70,.25);
+      background:#2B0A63; color:#fff; border:none;
+      padding:14px 18px; border-radius:999px; font-weight:900; cursor:pointer;
+      box-shadow:0 10px 20px rgba(30,0,70,.28);
     }
     .submit:hover{filter:brightness(1.05)}
-    .hint{
-      margin-top:10px; text-align:center; color:#787878; font-size:12px;
-    }
 
-    /* ---------- Responsive ---------- */
+    .hint{margin-top:12px; text-align:center; color:#777; font-size:12px}
+
     @media (max-width:720px){
-      h1{font-size:28px}
-      .hero{height:300px}
-      .note{margin-top:-18px; font-size:13px}
-      .card{padding:20px 16px}
+      .hero{height:230px}
+      h1{font-size:24px}
+      .card{margin:-56px auto 0; padding:20px 16px}
     }
   </style>
 </head>
 <body>
-  <!-- Topbar mit neuem Logo -->
+  <!-- top bar -->
   <div class="topbar">
     <div class="logo">
       <img src="NEWlogo.png" alt="Free2move" />
@@ -147,7 +128,7 @@
     </div>
   </div>
 
-  <!-- Langer lila Hero -->
+  <!-- hero exactly like the screenshot -->
   <section class="hero">
     <div class="hero-inner">
       <div class="eyebrow">💜 Mit Free2move hinfahren – Voucher anfragen</div>
@@ -160,20 +141,14 @@
     </div>
   </section>
 
-  <!-- Hinweis-Pill unter dem Hero -->
-  <div class="note">
-    Hinweis: Nach Freigabe erhältst du einen <b>Affiliate-Link</b>, über den deine Community die App herunterladen und sich registrieren kann.
-    Für <b>jeden Download/Registrierung über deinen Link</b> erhältst du <b>5 €</b>.
-  </div>
-
-  <!-- Formularkarte -->
+  <!-- form card -->
   <div class="wrap" id="form">
     <form class="card" id="voucherForm" novalidate>
       <h2>Voucher anfragen</h2>
       <div class="grid">
         <div>
           <label for="name">Dein Name</label>
-          <input id="name" name="name" type="text" placeholder="Max Mustermann" required />
+          <input id="name" name="name" type="text" placeholder="Louisa" required />
         </div>
 
         <div>
@@ -194,7 +169,7 @@
 
         <div>
           <label for="city">Stadt</label>
-          <input id="city" name="city" type="text" placeholder="Berlin" />
+          <input id="city" name="city" type="text" placeholder="Hamburg" />
         </div>
 
         <div>
@@ -217,7 +192,7 @@
   </div>
 
   <script>
-    // === Konfiguration ===
+    // Web-App Ziel
     const GAS_URL = "https://script.google.com/macros/s/AKfycbydyErnvoFBMVJJ_xRtGFRmy4KDMZM-PNM5Z5UHStuNWHkpm2CNCiR9wUPe0n9i7wruvg/exec";
     const THANKYOU_URL = "thankyou.html";
 
@@ -226,7 +201,6 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Simple Frontend-Validation
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
@@ -238,20 +212,19 @@
         instagram: form.instagram.value.trim(),
         occasion: form.occasion.value.trim(),
         city: form.city.value.trim(),
-        date: form.date.value,         // yyyy-mm-dd (vom <input type=date>)
+        date: form.date.value,
         notes: form.notes.value.trim(),
-        amount: "50"                   // fix, falls das Script das Feld erwartet
+        amount: "50" // fix, falls das Backend das Feld erwartet
       };
 
       try {
         const res = await fetch(GAS_URL, {
           method: "POST",
-          headers: {"Content-Type":"application/json"},
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
           redirect: "follow"
         });
 
-        // Bei Apps Script Web App mit doPost -> 200/302/… okay
         if (res.ok || res.type === "opaqueredirect") {
           window.location.href = THANKYOU_URL;
         } else {
@@ -264,8 +237,6 @@
   </script>
 </body>
 </html>
-
-
 
 
 
